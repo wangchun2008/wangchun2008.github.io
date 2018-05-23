@@ -2,154 +2,154 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://iamtim.wang/2017/03/15/acme.sh-manual/</loc>
+    <loc>https://iamtim.wang/acme.sh-manual/</loc>
     
     <lastmod>2018-05-23T06:59:45.008Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/15/zabbix-install/</loc>
+    <loc>https://iamtim.wang/zabbix-install/</loc>
     
     <lastmod>2018-05-23T06:58:36.363Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/04/01/zabbix-fpmmm/</loc>
+    <loc>https://iamtim.wang/zabbix-fpmmm/</loc>
     
     <lastmod>2018-05-23T06:58:12.175Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/15/xtrabackup-manual/</loc>
+    <loc>https://iamtim.wang/xtrabackup-manual/</loc>
     
     <lastmod>2018-05-23T06:57:49.340Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/04/11/resource-summary/</loc>
+    <loc>https://iamtim.wang/resource-summary/</loc>
     
     <lastmod>2018-05-23T06:57:25.779Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/16/redmine-environment-with-docker/</loc>
+    <loc>https://iamtim.wang/redmine-environment-with-docker/</loc>
     
     <lastmod>2018-05-23T06:56:35.476Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/24/redis-install/</loc>
+    <loc>https://iamtim.wang/redis-install/</loc>
     
     <lastmod>2018-05-23T06:56:13.546Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/15/letsencrypt-manual/</loc>
+    <loc>https://iamtim.wang/letsencrypt-manual/</loc>
     
     <lastmod>2018-05-23T06:55:49.675Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/28/jemalloc-install/</loc>
+    <loc>https://iamtim.wang/jemalloc-install/</loc>
     
     <lastmod>2018-05-23T06:55:26.174Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/04/25/install-mysql-5.7.18-for-source/</loc>
+    <loc>https://iamtim.wang/install-mysql-5.7.18-for-source/</loc>
     
     <lastmod>2018-05-23T06:55:04.893Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/04/26/install-mysql-5.7.18-for-generic-binaries/</loc>
+    <loc>https://iamtim.wang/install-mysql-5.7.18-for-generic-binaries/</loc>
     
     <lastmod>2018-05-23T06:54:18.772Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/15/glusterfs-install-and-settings-for-test-environment/</loc>
+    <loc>https://iamtim.wang/glusterfs-install-and-settings-for-test-environment/</loc>
     
     <lastmod>2018-05-23T06:53:53.736Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/17/gitlab-upgrade-test/</loc>
+    <loc>https://iamtim.wang/gitlab-upgrade-test/</loc>
     
     <lastmod>2018-05-23T06:53:28.231Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/15/gitlab-install-migration-upgrade/</loc>
+    <loc>https://iamtim.wang/gitlab-install-migration-upgrade/</loc>
     
     <lastmod>2018-05-23T06:53:08.875Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/15/fastdfs-install-and-settings-for-test-environment/</loc>
+    <loc>https://iamtim.wang/fastdfs-install-and-settings-for-test-environment/</loc>
     
     <lastmod>2018-05-23T06:52:38.484Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/15/centos6-init/</loc>
+    <loc>https://iamtim.wang/centos6-init/</loc>
     
     <lastmod>2018-05-23T06:52:15.435Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/03/17/books/</loc>
+    <loc>https://iamtim.wang/books/</loc>
     
     <lastmod>2018-05-23T06:50:23.581Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/04/06/zabbix-zapache/</loc>
+    <loc>https://iamtim.wang/zabbix-zapache/</loc>
     
     <lastmod>2018-05-23T06:48:56.587Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/05/15/zabbix-dell-omsa/</loc>
+    <loc>https://iamtim.wang/zabbix-dell-omsa/</loc>
     
     <lastmod>2018-05-23T06:17:17.511Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/04/28/keepalived-haproxy-for-lb/</loc>
+    <loc>https://iamtim.wang/keepalived-haproxy-for-lb/</loc>
     
     <lastmod>2018-05-23T06:16:46.932Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2017/05/16/megacli-install/</loc>
+    <loc>https://iamtim.wang/megacli-install/</loc>
     
     <lastmod>2018-05-23T06:16:08.123Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iamtim.wang/2018/05/23/pmm-install/</loc>
+    <loc>https://iamtim.wang/pmm-install/</loc>
     
     <lastmod>2018-05-23T06:15:24.400Z</lastmod>
     
