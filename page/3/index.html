@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -84,7 +84,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -270,9 +270,6 @@
   
 
   
-    
-
-  
 
   
     <div class="site-search">
@@ -316,6 +313,9 @@
       <div class="main-inner">
         <div class="content-wrap">
           
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -335,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamtim.wang/2017/03/15/fastdfs-install-and-settings-for-test-environment/">
+    <link itemprop="mainEntityOfPage" href="https://iamtim.wang/2017/03/15/gitlab-install-migration-upgrade/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tim Wang">
@@ -354,8 +354,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/15/fastdfs-install-and-settings-for-test-environment/" itemprop="url">
-                  安装配置 FastDFS 文件系统
+                <a class="post-title-link" href="/2017/03/15/gitlab-install-migration-upgrade/" itemprop="url">
+                  GitLab 安装、迁移和升级
                 </a>
               
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-22 13:57:39" itemprop="dateModified" datetime="2018-05-22T13:57:39+08:00">2018-05-22</time>
+                <time title="修改时间：2018-05-23 14:53:08" itemprop="dateModified" datetime="2018-05-23T14:53:08+08:00">2018-05-23</time>
               
             
           </span>
@@ -415,14 +415,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/revision-control/" itemprop="url" rel="index"><span itemprop="name">revision control</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/file-system/" itemprop="url" rel="index"><span itemprop="name">file system</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/revision-control/gitlab/" itemprop="url" rel="index"><span itemprop="name">gitlab</span></a></span>
 
                 
                 
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/15/fastdfs-install-and-settings-for-test-environment/#comments" itemprop="discussionUrl">
+                <a href="/2017/03/15/gitlab-install-migration-upgrade/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/15/fastdfs-install-and-settings-for-test-environment/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/03/15/gitlab-install-migration-upgrade/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -469,15 +469,16 @@
 
       
         
-          <p>在两台虚拟机上安装 FastDFS 文件系统，用来学习与测试。</p>
+          <p><img src="http://omxqsw5np.bkt.clouddn.com/images/gitlab-install-migration-upgrade.png" alt="GitLab 安装、迁移和升级"></p>
+<p>记录GitLab 安装、迁移和升级命令。</p>
 <blockquote>
-<p>服务器信息：test01(192.168.115.131)、test02(192.168.155.132)</p>
-<p>OS 版本：CentOS release 6.7 (Final)</p>
-<p>FastDFS 版本：5.08</p>
+<p>安装介质可以从 <a href="https://packages.gitlab.com/gitlab/gitlab-ce" target="_blank" rel="noopener">gitlab 官网</a> 选择对应的操作系统版本进行下载</p>
+<p>操作系统版本：CentOS 6.5_64</p>
+<p>GitLab 版本：7.14.1</p>
 </blockquote>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/15/fastdfs-install-and-settings-for-test-environment/#more" rel="contents">
+            <a class="btn" href="/2017/03/15/gitlab-install-migration-upgrade/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -536,7 +537,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamtim.wang/2017/03/15/centos6-init/">
+    <link itemprop="mainEntityOfPage" href="https://iamtim.wang/2017/03/15/acme.sh-manual/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tim Wang">
@@ -555,8 +556,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/15/centos6-init/" itemprop="url">
-                  CentOS6 系统初始化配置
+                <a class="post-title-link" href="/2017/03/15/acme.sh-manual/" itemprop="url">
+                  使用 acme.sh 工具申请 Let's Encrypt 证书
                 </a>
               
             
@@ -599,7 +600,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-22 10:41:13" itemprop="dateModified" datetime="2018-05-22T10:41:13+08:00">2018-05-22</time>
+                <time title="修改时间：2018-05-23 14:59:45" itemprop="dateModified" datetime="2018-05-23T14:59:45+08:00">2018-05-23</time>
               
             
           </span>
@@ -616,7 +617,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/https/" itemprop="url" rel="index"><span itemprop="name">https</span></a></span>
 
                 
                 
@@ -631,10 +632,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/15/centos6-init/#comments" itemprop="discussionUrl">
+                <a href="/2017/03/15/acme.sh-manual/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/15/centos6-init/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/03/15/acme.sh-manual/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -663,13 +664,14 @@
 
       
         
-          <p>Linux 服务器初始化配置。</p>
+          <p><img src="http://omxqsw5np.bkt.clouddn.com/images/acme.sh-manual.png" alt="使用 acme.sh 工具申请 Let&#39;s Encrypt 证书"></p>
+<p>使用 acme.sh 工具申请 Let’s Encrypt 免费证书，新增申请通配符证书操作。</p>
 <blockquote>
-<p>以下配置适用于：CentOS 6</p>
+<p>操作系统版本：CentOS 6.7_64</p>
 </blockquote>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/15/centos6-init/#more" rel="contents">
+            <a class="btn" href="/2017/03/15/acme.sh-manual/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1047,6 +1049,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
 
   
 
