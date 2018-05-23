@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>https://iamtim.wang/2018/05/23/pmm-install/</loc>
+    <lastmod>2018-05-23T04:03:44.061Z</lastmod>
+    <data>
+        <display>
+        <title>安装配置 PMM</title>
+        <pubTime>2018-05-22T16:00:01.000Z</pubTime>
+        
+        <tag>PMM</tag>
+         
+         
+           
+             
+              <breadCrumb title="monitor" url="https://iamtim.wang/categories/monitor/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://iamtim.wang/2017/03/15/acme.sh-manual/</loc>
+    <lastmod>2018-05-23T01:53:47.072Z</lastmod>
+    <data>
+        <display>
+        <title>使用 acme.sh 工具申请 Let's Encrypt 证书</title>
+        <pubTime>2017-03-14T16:00:01.000Z</pubTime>
+        
+        <tag>https</tag>
+         
+        <tag>letsencrypt</tag>
+         
+        <tag>acme.sh</tag>
+         
+         
+           
+             
+              <breadCrumb title="https" url="https://iamtim.wang/categories/https/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://iamtim.wang/2017/03/17/books/</loc>
     <lastmod>2018-05-22T08:54:51.444Z</lastmod>
     <data>
@@ -120,9 +164,9 @@
         <title>使用 zabbix 监控 DELL 服务器</title>
         <pubTime>2017-05-14T16:00:01.000Z</pubTime>
         
-        <tag>zabbix</tag>
-         
         <tag>dell</tag>
+         
+        <tag>zabbix</tag>
          
         <tag>omsa</tag>
          
@@ -430,30 +474,6 @@
           
              
               <breadCrumb title="file system" url="https://iamtim.wang/categories/linux/file-system/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://iamtim.wang/2017/03/15/acme.sh-manual/</loc>
-    <lastmod>2018-05-22T05:22:47.619Z</lastmod>
-    <data>
-        <display>
-        <title>使用 acme.sh 工具申请 Let's Encrypt 证书</title>
-        <pubTime>2017-03-14T16:00:01.000Z</pubTime>
-        
-        <tag>https</tag>
-         
-        <tag>letsencrypt</tag>
-         
-        <tag>acme.sh</tag>
-         
-         
-           
-             
-              <breadCrumb title="https" url="https://iamtim.wang/categories/https/"/>
           
         </display>
     </data>

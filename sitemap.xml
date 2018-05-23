@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iamtim.wang/2018/05/23/pmm-install/</loc>
+    
+    <lastmod>2018-05-23T04:03:44.061Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtim.wang/2017/03/15/acme.sh-manual/</loc>
+    
+    <lastmod>2018-05-23T01:53:47.072Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iamtim.wang/2017/03/17/books/</loc>
     
     <lastmod>2018-05-22T08:54:51.444Z</lastmod>
@@ -131,13 +145,6 @@
     <loc>https://iamtim.wang/2017/03/15/fastdfs-install-and-settings-for-test-environment/</loc>
     
     <lastmod>2018-05-22T05:57:39.205Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iamtim.wang/2017/03/15/acme.sh-manual/</loc>
-    
-    <lastmod>2018-05-22T05:22:47.619Z</lastmod>
     
   </url>
   

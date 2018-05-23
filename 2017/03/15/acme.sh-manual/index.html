@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="使用 acme.sh 工具申请 Let’s Encrypt 免费证书。  操作系统版本：CentOS 6.7_64">
+  <meta name="description" content="使用 acme.sh 工具申请 Let’s Encrypt 免费证书，新增申请通配符证书操作。  操作系统版本：CentOS 6.7_64">
 <meta name="keywords" content="https,letsencrypt,acme.sh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 acme.sh 工具申请 Let&#39;s Encrypt 证书">
 <meta property="og:url" content="https://iamtim.wang/2017/03/15/acme.sh-manual/index.html">
 <meta property="og:site_name" content="懒癌晚期的中年大叔">
-<meta property="og:description" content="使用 acme.sh 工具申请 Let’s Encrypt 免费证书。  操作系统版本：CentOS 6.7_64">
+<meta property="og:description" content="使用 acme.sh 工具申请 Let’s Encrypt 免费证书，新增申请通配符证书操作。  操作系统版本：CentOS 6.7_64">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-22T05:22:47.619Z">
+<meta property="og:updated_time" content="2018-05-23T01:53:47.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 acme.sh 工具申请 Let&#39;s Encrypt 证书">
-<meta name="twitter:description" content="使用 acme.sh 工具申请 Let’s Encrypt 免费证书。  操作系统版本：CentOS 6.7_64">
+<meta name="twitter:description" content="使用 acme.sh 工具申请 Let’s Encrypt 免费证书，新增申请通配符证书操作。  操作系统版本：CentOS 6.7_64">
 
 
 
@@ -395,7 +395,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-22 13:22:47" itemprop="dateModified" datetime="2018-05-22T13:22:47+08:00">2018-05-22</time>
+                <time title="修改时间：2018-05-23 09:53:47" itemprop="dateModified" datetime="2018-05-23T09:53:47+08:00">2018-05-23</time>
               
             
           </span>
@@ -466,7 +466,7 @@
       
 
       
-        <p>使用 acme.sh 工具申请 Let’s Encrypt 免费证书。</p>
+        <p>使用 acme.sh 工具申请 Let’s Encrypt 免费证书，新增申请通配符证书操作。</p>
 <blockquote>
 <p>操作系统版本：CentOS 6.7_64</p>
 </blockquote>
@@ -479,6 +479,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@UCT-PRD acme.sh]<span class="comment"># ./acme.sh --issue -d iamtim.wang -d www.iamtim.wang -w /var/www/html</span></span><br><span class="line">[Mon Dec 12 14:03:31 CST 2016] Registering account</span><br><span class="line">[Mon Dec 12 14:03:55 CST 2016] Registered</span><br><span class="line">[Mon Dec 12 14:04:07 CST 2016] Update success.</span><br><span class="line">[Mon Dec 12 14:04:07 CST 2016] Creating domain key</span><br><span class="line">[Mon Dec 12 14:04:07 CST 2016] Multi domain=<span class="string">'DNS:www.iamtim.wang'</span></span><br><span class="line">[Mon Dec 12 14:04:07 CST 2016] Getting domain auth token <span class="keyword">for</span> each domain</span><br><span class="line">[Mon Dec 12 14:04:07 CST 2016] Getting webroot <span class="keyword">for</span> domain=<span class="string">'iamtim.wang'</span></span><br><span class="line">[Mon Dec 12 14:04:07 CST 2016] _w=<span class="string">'/var/www/html'</span></span><br><span class="line">[Mon Dec 12 14:04:07 CST 2016] Getting new-authz <span class="keyword">for</span> domain=<span class="string">'iamtim.wang'</span></span><br><span class="line">[Mon Dec 12 14:04:19 CST 2016] The new-authz request is ok.</span><br><span class="line">[Mon Dec 12 14:04:19 CST 2016] Getting webroot <span class="keyword">for</span> domain=<span class="string">'www.iamtim.wang'</span></span><br><span class="line">[Mon Dec 12 14:04:19 CST 2016] _w=<span class="string">'/var/www/html'</span></span><br><span class="line">[Mon Dec 12 14:04:19 CST 2016] Getting new-authz <span class="keyword">for</span> domain=<span class="string">'www.iamtim.wang'</span></span><br><span class="line">[Mon Dec 12 14:04:31 CST 2016] The new-authz request is ok.</span><br><span class="line">[Mon Dec 12 14:04:31 CST 2016] Verifying:iamtim.wang</span><br><span class="line">[Mon Dec 12 14:04:57 CST 2016] Success</span><br><span class="line">[Mon Dec 12 14:04:57 CST 2016] Verifying:www.iamtim.wang</span><br><span class="line">[Mon Dec 12 14:05:21 CST 2016] Success</span><br><span class="line">[Mon Dec 12 14:05:21 CST 2016] Verify finished, start to sign.</span><br><span class="line">[Mon Dec 12 14:05:33 CST 2016] Cert success.</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">...</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">[Mon Dec 12 14:05:33 CST 2016] Your cert is <span class="keyword">in</span>  /root/.acme.sh/iamtim.wang/iamtim.wang.cer</span><br><span class="line">[Mon Dec 12 14:05:33 CST 2016] Your cert key is <span class="keyword">in</span>  /root/.acme.sh/iamtim.wang/iamtim.wang.key</span><br><span class="line">[Mon Dec 12 14:05:45 CST 2016] The intermediate CA cert is <span class="keyword">in</span>  /root/.acme.sh/iamtim.wang/ca.cer</span><br><span class="line">[Mon Dec 12 14:05:45 CST 2016] And the full chain certs is there:  /root/.acme.sh/iamtim.wang/fullchain.cer</span><br><span class="line">[root@UCT-PRD acme.sh]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <h2 id="拷贝证书到相应目录"><a href="#拷贝证书到相应目录" class="headerlink" title="拷贝证书到相应目录"></a>拷贝证书到相应目录</h2><p>证书申请成功后，拷贝证书到相应目录中(ssl.conf定义位置)：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@UCT-PRD acme.sh]<span class="comment"># ./acme.sh --installcert -d iamtim.wang --certpath /etc/httpd/conf/iamtim.wang/cert.pem --keypath /etc/httpd/conf/iamtim.wang/key.pem --fullchainpath /etc/httpd/conf/iamtim.wang/fullchain.pem --reloadcmd "service httpd restart"</span></span><br><span class="line">[Mon Dec 12 14:13:40 CST 2016] Installing cert to:/etc/httpd/conf/iamtim.wang/cert.pem</span><br><span class="line">[Mon Dec 12 14:13:40 CST 2016] Installing key to:/etc/httpd/conf/iamtim.wang/key.pem</span><br><span class="line">[Mon Dec 12 14:13:40 CST 2016] Installing full chain to:/etc/httpd/conf/iamtim.wang/fullchain.pem</span><br><span class="line">[Mon Dec 12 14:13:40 CST 2016] Run Le_ReloadCmd: service httpd restart</span><br><span class="line">Stopping httpd:                                            [  OK  ]</span><br><span class="line">Starting httpd:                                            [  OK  ]</span><br><span class="line">[Mon Dec 12 14:13:40 CST 2016] Reload success</span><br><span class="line">[root@UCT-PRD acme.sh]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<h1 id="申请通配符证书"><a href="#申请通配符证书" class="headerlink" title="申请通配符证书"></a>申请通配符证书</h1><p>从阿里云后台获取密钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@UCT-PRD acme.sh]<span class="comment"># export Ali_Key="ghjkghjkghjkghjkghjkghjkghjk"</span></span><br><span class="line">[root@UCT-PRD acme.sh]<span class="comment"># export Ali_Secret="asdfasdfasdfasdfasdfasdfasdf"</span></span><br></pre></td></tr></table></figure>
+<p>申请证书</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@UCT-PRD acme.sh]<span class="comment"># ./acme.sh --issue --dns dns_ali -d iamtim.wang -d *.iamtim.wang</span></span><br></pre></td></tr></table></figure>
+<p>最后拷贝证书到相应路径，步骤参考上文。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E</a></li>
 </ul>
@@ -548,14 +553,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/15/letsencrypt-manual/" rel="next" title="使用 Certbot 工具申请 Let's Encrypt 证书">
+                <i class="fa fa-chevron-left"></i> 使用 Certbot 工具申请 Let's Encrypt 证书
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/15/zabbix-install/" rel="prev" title="zabbix 3.0.7 安装">
-                zabbix 3.0.7 安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/16/redmine-environment-with-docker/" rel="prev" title="使用 Docker 创建 redmine 环境">
+                使用 Docker 创建 redmine 环境 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -644,7 +653,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -742,7 +751,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -798,7 +809,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#acme-sh-安装"><span class="nav-number">1.</span> <span class="nav-text">acme.sh 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载-acme-sh-代码"><span class="nav-number">1.1.</span> <span class="nav-text">下载 acme.sh 代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-acme-sh"><span class="nav-number">1.2.</span> <span class="nav-text">安装 acme.sh</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#acme-sh-使用"><span class="nav-number">2.</span> <span class="nav-text">acme.sh 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#申请证书"><span class="nav-number">2.1.</span> <span class="nav-text">申请证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拷贝证书到相应目录"><span class="nav-number">2.2.</span> <span class="nav-text">拷贝证书到相应目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#acme-sh-安装"><span class="nav-number">1.</span> <span class="nav-text">acme.sh 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载-acme-sh-代码"><span class="nav-number">1.1.</span> <span class="nav-text">下载 acme.sh 代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-acme-sh"><span class="nav-number">1.2.</span> <span class="nav-text">安装 acme.sh</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#acme-sh-使用"><span class="nav-number">2.</span> <span class="nav-text">acme.sh 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#申请证书"><span class="nav-number">2.1.</span> <span class="nav-text">申请证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拷贝证书到相应目录"><span class="nav-number">2.2.</span> <span class="nav-text">拷贝证书到相应目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#申请通配符证书"><span class="nav-number">3.</span> <span class="nav-text">申请通配符证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

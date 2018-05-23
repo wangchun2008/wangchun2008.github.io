@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[安装配置 PMM]]></title>
+    <url>%2F2018%2F05%2F23%2Fpmm-install%2F</url>
+    <content type="text"><![CDATA[Percona Monitoring and Management (PMM) 是用于管理和监控 MySQL 和 MongoDB 性能的开源平台，通过 PMM 客户端收集到的 DB 监控数据用第三方软件 Grafana 展示出来。下文为测试环境安装配置 PMM。 PMM Server 版本：1.10.0 操作系统版本：CentOS 6.7 x86_64 PMM Server 安装PMM Server 提供两种安装介质，一种是 DOCKER 镜像，一种是 OVF 镜像文件。在这里我选择使用 VirtualBox 虚拟机安装 PMM Server。下载 OVF 镜像文件 后，使用 VirtualBox 导入镜像文件启动虚拟机；在浏览器中打开虚拟机显示的访问地址，设置用户名与密码完成配置；至此 PMM Server 安装完成。 注意：导入 OVF 镜像文件时需要重置 MAC 地址；网络连接方式选择桥接网卡； 系统用户：root 密码：percona PMM client 安装使用 yum 方式安装客户端 12yum install http://www.percona.com/downloads/perconarelease/redhat/0.1-4/perconarelease-0.1-4.noarch.rpmyum -y install pmm-client PMM client 配置PMM client 连接 PMM Server，此次需要输入在浏览器中设置的用户名、密码。 123456[root@pmm_client ~]# pmm-admin config --Server &#123;pmm_server_ip&#125; --Server-user &#123;username&#125; --Server-password &#123;password&#125;OK, PMM server is alive.PMM Server | 10.1.1.1 (password-protected)Client Name | pmm_clientClient Address | 10.1.1.2 添加监控项，此处需要使用到 MySQL 用户信息。 注意 PMM server 根据不同监控要求，要打开 42000、42001、42002 端口。 12345[root@pmm_client ~]# pmm-admin add linux:metricsOK, now monitoring this system.[root@pmm_client ~]# pmm-admin add mysql:metrics --user &#123;mysql_user&#125; --password &#123;mysql_password&#125; --create-userOK, now monitoring MySQL metrics using DSN pmm:***@unix(/var/lib/mysql/mysql.sock) 查看监控情况 12345678910111213[root@pmm_client ~]# pmm-admin listpmm-admin 1.10.0PMM Server | 10.1.1.1 (password-protected)Client Name | pmm_clientClient Address | 10.1.1.2Service Manager | linux-upstart-------------- ----------------- ----------- -------- ------------------------------------- --------SERVICE TYPE NAME LOCAL PORT RUNNING DATA SOURCE OPTIONS-------------- ----------------- ----------- -------- ------------------------------------- --------linux:metrics pmm_client 42000 YES -mysql:metrics pmm_client 42002 YES pmm:***@unix(/mysql/data/mysql.sock) 查看网络连接情况 123456789101112131415161718192021222324252627282930313233[root@pmm_client ~]# pmm-admin check-networkPMM Network StatusServer Address | 10.1.1.1Client Address | 10.1.1.2* System TimeNTP Server (0.pool.ntp.org) | 2018-05-23 11:34:49 +0800 CSTPMM Server | 2018-05-23 03:34:49 +0000 GMTPMM Client | 2018-05-23 11:34:50 +0800 CSTPMM Server Time Drift | OKPMM Client Time Drift | OKPMM Client to PMM Server Time Drift | OK* Connection: Client --&gt; Server-------------------- -------SERVER SERVICE STATUS-------------------- -------Consul API OKPrometheus API OKQuery Analytics API DOWNConnection duration | 411.068µsRequest duration | 10.429001msFull round trip | 10.840069ms* Connection: Client &lt;-- Server-------------- ----------------- ------------------ ------- ---------- ---------SERVICE TYPE NAME REMOTE ENDPOINT STATUS HTTPS/TLS PASSWORD-------------- ----------------- ------------------ ------- ---------- ---------linux:metrics pmm_client 10.1.1.2:42000 OK YES YESmysql:metrics pmm_client 10.1.1.2:42002 OK YES YES PMM 详细的监控配置，会记录在后续文章。 参考 Percona Monitoring and Management Documentation]]></content>
+      <categories>
+        <category>monitor</category>
+      </categories>
+      <tags>
+        <tag>PMM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[安装 MegaCLI]]></title>
     <url>%2F2017%2F05%2F16%2Fmegacli-install%2F</url>
     <content type="text"><![CDATA[安装 MegaCLI 命令，用于查看 DELL 服务器 RAID 状态。 CentOS 版本：6.7 x86_64 MegaCLI 版本：8.07.14 安装 MegaCLI查看 RAID 卡信息 12lspci | grep -i raiddmesg | grep LSI 安装 MegaCLI 1234yum install sg3_utils unzip wgetwget http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/8-07-14_MegaCLI.zipunzip raid-controllers-common-files/8-07-14_MegaCLI.ziprpm -ivh Linux/MegaCli-8.07.14-1.noarch.rpm MegaCLI 命令12345cd /opt/MegaRAID/MegaCli./MegaCli64 -V # 查看版本./MegaCli64 -LdPdInfo -a0 | grep -E "Virtual Drive:|Slot Number:" | xargs | sed -r 's/(Slot Number:)(\s[0-9]+)/\2,/g' | sed 's/(Target Id: .)/Physical Drives ids:/g' | sed 's/Virtual Drive:/\nVirtual Drive:/g' # 查看虚拟设备./MegaCli64 -ShowSummary -aAll # 查看汇总信息./MegaCli64 -PDList -aALL # 查看硬盘信息 参考 Hardware Raid Setup using MegaCli 通过MegaCLI提取RAID控制器日志(Windows + Linux)]]></content>
@@ -20,8 +31,8 @@
         <category>monitor</category>
       </categories>
       <tags>
-        <tag>zabbix</tag>
         <tag>dell</tag>
+        <tag>zabbix</tag>
         <tag>omsa</tag>
       </tags>
   </entry>
@@ -156,28 +167,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[GitLab 安装、迁移和升级]]></title>
-    <url>%2F2017%2F03%2F15%2Fgitlab-install-migration-upgrade%2F</url>
-    <content type="text"><![CDATA[记录GitLab 安装、迁移和升级命令。 安装介质可以从 gitlab 官网 选择对应的操作系统版本进行下载 操作系统版本：CentOS 6.5_64 GitLab 版本：7.14.1 GitLab 安装123456yum install curl openssh-server postfix cronieservice postfix startchkconfig postfix onchkconfig iptables offservice iptables stoprpm -ivh gitlab-ce-7.14.1-ce.0.el6.x86_64.rpm GitLab 迁移 注意：gitlab 版本要保持一致 12345cp 1454176910_gitlab_backup.tar /var/opt/gitlab/backupsgitlab-ctl stop unicorngitlab-ctl stop sidekiqgitlab-rake gitlab:backup:restore BACKUP=1454176910gitlab-ctl start GitLab 升级 注意：gitlab 服务器升级版本会自动备份 1rpm -Uvh gitlab-ce-8.3.1-ce.1.el6.x86_64.rpm]]></content>
+    <title><![CDATA[使用 acme.sh 工具申请 Let's Encrypt 证书]]></title>
+    <url>%2F2017%2F03%2F15%2Facme.sh-manual%2F</url>
+    <content type="text"><![CDATA[使用 acme.sh 工具申请 Let’s Encrypt 免费证书，新增申请通配符证书操作。 操作系统版本：CentOS 6.7_64 acme.sh 安装下载 acme.sh 代码12345678[root@UCT-PRD ~]# git clone https://github.com/Neilpang/acme.sh.gitInitialized empty Git repository in /root/acme.sh/.git/remote: Counting objects: 2697, done.remote: Compressing objects: 100% (8/8), done.remote: Total 2697 (delta 2), reused 0 (delta 0), pack-reused 2689Receiving objects: 100% (2697/2697), 835.64 KiB | 21 KiB/s, done.Resolving deltas: 100% (1252/1252), done.[root@UCT-PRD ~]# 安装 acme.sh1234567891011121314151617[root@UCT-PRD ~]# cd acme.sh[root@UCT-PRD acme.sh]# lsacme.sh deploy dnsapi README.md[root@UCT-PRD acme.sh]# ./acme.sh --install[Mon Dec 12 14:01:44 CST 2016] It is recommended to install nc first, try to install 'nc' or 'netcat'.[Mon Dec 12 14:01:44 CST 2016] We use nc for standalone server if you use standalone mode.[Mon Dec 12 14:01:44 CST 2016] If you don't use standalone mode, just ignore this warning.[Mon Dec 12 14:01:44 CST 2016] Installing to /root/.acme.sh[Mon Dec 12 14:01:44 CST 2016] Installed to /root/.acme.sh/acme.sh[Mon Dec 12 14:01:44 CST 2016] Installing alias to '/root/.bashrc'[Mon Dec 12 14:01:44 CST 2016] OK, Close and reopen your terminal to start using acme.sh[Mon Dec 12 14:01:44 CST 2016] Installing alias to '/root/.cshrc'[Mon Dec 12 14:01:44 CST 2016] Installing alias to '/root/.tcshrc'[Mon Dec 12 14:01:44 CST 2016] Installing cron job[Mon Dec 12 14:01:44 CST 2016] Good, bash is found, so change the shebang to use bash as prefered.[Mon Dec 12 14:01:44 CST 2016] OK[root@UCT-PRD acme.sh]# acme.sh 使用申请证书 注意：/var/www/html 目录要有写入权限 1234567891011121314151617181920212223242526272829[root@UCT-PRD acme.sh]# ./acme.sh --issue -d iamtim.wang -d www.iamtim.wang -w /var/www/html[Mon Dec 12 14:03:31 CST 2016] Registering account[Mon Dec 12 14:03:55 CST 2016] Registered[Mon Dec 12 14:04:07 CST 2016] Update success.[Mon Dec 12 14:04:07 CST 2016] Creating domain key[Mon Dec 12 14:04:07 CST 2016] Multi domain='DNS:www.iamtim.wang'[Mon Dec 12 14:04:07 CST 2016] Getting domain auth token for each domain[Mon Dec 12 14:04:07 CST 2016] Getting webroot for domain='iamtim.wang'[Mon Dec 12 14:04:07 CST 2016] _w='/var/www/html'[Mon Dec 12 14:04:07 CST 2016] Getting new-authz for domain='iamtim.wang'[Mon Dec 12 14:04:19 CST 2016] The new-authz request is ok.[Mon Dec 12 14:04:19 CST 2016] Getting webroot for domain='www.iamtim.wang'[Mon Dec 12 14:04:19 CST 2016] _w='/var/www/html'[Mon Dec 12 14:04:19 CST 2016] Getting new-authz for domain='www.iamtim.wang'[Mon Dec 12 14:04:31 CST 2016] The new-authz request is ok.[Mon Dec 12 14:04:31 CST 2016] Verifying:iamtim.wang[Mon Dec 12 14:04:57 CST 2016] Success[Mon Dec 12 14:04:57 CST 2016] Verifying:www.iamtim.wang[Mon Dec 12 14:05:21 CST 2016] Success[Mon Dec 12 14:05:21 CST 2016] Verify finished, start to sign.[Mon Dec 12 14:05:33 CST 2016] Cert success.-----BEGIN CERTIFICATE-----...-----END CERTIFICATE-----[Mon Dec 12 14:05:33 CST 2016] Your cert is in /root/.acme.sh/iamtim.wang/iamtim.wang.cer[Mon Dec 12 14:05:33 CST 2016] Your cert key is in /root/.acme.sh/iamtim.wang/iamtim.wang.key[Mon Dec 12 14:05:45 CST 2016] The intermediate CA cert is in /root/.acme.sh/iamtim.wang/ca.cer[Mon Dec 12 14:05:45 CST 2016] And the full chain certs is there: /root/.acme.sh/iamtim.wang/fullchain.cer[root@UCT-PRD acme.sh]# 拷贝证书到相应目录证书申请成功后，拷贝证书到相应目录中(ssl.conf定义位置)： 123456789[root@UCT-PRD acme.sh]# ./acme.sh --installcert -d iamtim.wang --certpath /etc/httpd/conf/iamtim.wang/cert.pem --keypath /etc/httpd/conf/iamtim.wang/key.pem --fullchainpath /etc/httpd/conf/iamtim.wang/fullchain.pem --reloadcmd "service httpd restart"[Mon Dec 12 14:13:40 CST 2016] Installing cert to:/etc/httpd/conf/iamtim.wang/cert.pem[Mon Dec 12 14:13:40 CST 2016] Installing key to:/etc/httpd/conf/iamtim.wang/key.pem[Mon Dec 12 14:13:40 CST 2016] Installing full chain to:/etc/httpd/conf/iamtim.wang/fullchain.pem[Mon Dec 12 14:13:40 CST 2016] Run Le_ReloadCmd: service httpd restartStopping httpd: [ OK ]Starting httpd: [ OK ][Mon Dec 12 14:13:40 CST 2016] Reload success[root@UCT-PRD acme.sh]# 申请通配符证书从阿里云后台获取密钥 12[root@UCT-PRD acme.sh]# export Ali_Key="ghjkghjkghjkghjkghjkghjkghjk"[root@UCT-PRD acme.sh]# export Ali_Secret="asdfasdfasdfasdfasdfasdfasdf" 申请证书 1[root@UCT-PRD acme.sh]# ./acme.sh --issue --dns dns_ali -d iamtim.wang -d *.iamtim.wang 最后拷贝证书到相应路径，步骤参考上文。 参考 https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E]]></content>
       <categories>
-        <category>revision control</category>
-        <category>gitlab</category>
+        <category>https</category>
       </categories>
       <tags>
-        <tag>gitlab</tag>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[xtrabackup 安装]]></title>
-    <url>%2F2017%2F03%2F15%2Fxtrabackup-manual%2F</url>
-    <content type="text"><![CDATA[记录 xtrabackup 安装命令。 操作系统版本：CentOS 6.5_64 MySQL数据库版本：5.7.12-log xtrabackup版本：2.4 注意：xtrabackup 版本与 MySQL 版本有对应关系： MySQL5.5 对应 xtrabackup 2.3、MySQL 5.7对应 xtrabackup 2.4 安装 xtrabackup12345yum install perl-DBI perl-DBD-MySQLrpm -ivh libev-4.15-1.el6.rf.x86_64.rpmyum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpmyum list | grep percona-xtrabackupyum install percona-xtrabackup-24]]></content>
-      <categories>
-        <category>database</category>
-        <category>mysql</category>
-      </categories>
-      <tags>
-        <tag>xtrabackup</tag>
+        <tag>https</tag>
+        <tag>letsencrypt</tag>
+        <tag>acme.sh</tag>
       </tags>
   </entry>
   <entry>
@@ -194,6 +193,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[xtrabackup 安装]]></title>
+    <url>%2F2017%2F03%2F15%2Fxtrabackup-manual%2F</url>
+    <content type="text"><![CDATA[记录 xtrabackup 安装命令。 操作系统版本：CentOS 6.5_64 MySQL数据库版本：5.7.12-log xtrabackup版本：2.4 注意：xtrabackup 版本与 MySQL 版本有对应关系： MySQL5.5 对应 xtrabackup 2.3、MySQL 5.7对应 xtrabackup 2.4 安装 xtrabackup12345yum install perl-DBI perl-DBD-MySQLrpm -ivh libev-4.15-1.el6.rf.x86_64.rpmyum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpmyum list | grep percona-xtrabackupyum install percona-xtrabackup-24]]></content>
+      <categories>
+        <category>database</category>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>xtrabackup</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[安装配置 GlusterFS 文件系统]]></title>
     <url>%2F2017%2F03%2F15%2Fglusterfs-install-and-settings-for-test-environment%2F</url>
     <content type="text"><![CDATA[在两台虚拟机上安装配置 GlusterFS 文件系统，用于学习与测试。 服务器信息：test01(192.168.115.131)、test02(192.168.155.132) OS版本：CentOS release 6.7 (Final) GlusterFS 版本：3.8.4 环境准备（both）修改 /etc/hosts 文件 12192.168.115.131 test01192.168.115.132 test02 安装依赖包 1yum install xfsprogs 格式化挂在分区 1234mkfs.xfs -i size=512 /dev/sdb1mkdir -p /data/brick1echo '/dev/sdb1 /data/brick1 xfs defaults 1 2' &gt;&gt; /etc/fstabmount -a &amp;&amp; mount 安装 glusterfs（both）安装软件包 123yum install -y centos-release-glusteryum install glusterfs-serverservice glusterd start 查看版本信息 1234567gluster --versionglusterfs 3.8.4 built on Sep 9 2016 17:31:23Repository revision: git://git.gluster.com/glusterfs.gitCopyright (c) 2006-2011 Gluster Inc. &lt;http://www.gluster.com&gt;GlusterFS comes with ABSOLUTELY NO WARRANTY.You may redistribute copies of GlusterFS under the terms of the GNU General Public License.You have new mail in /var/spool/mail/root 配置 Replicated Glusterfs Volume配置可信任的池 123gluster peer probe test02 ----test01执行gluster peer probe test01 ----test02执行` 创建 GlusterFS volume 123mkdir /data/brick1/gv0gluster volume create gv0 replica 2 test01:/data/brick1/gv0 test02:/data/brick1/gv0gluster volume start gv0 查看信息 123456789101112131415gluster volume infoVolume Name: gv0Type: ReplicateVolume ID: a0e5d4d6-15f4-40d1-8cdc-b2c2a4f074eaStatus: StartedSnapshot Count: 0Number of Bricks: 1 x 2 = 2Transport-type: tcpBricks:Brick1: test01:/data/brick1/gv0Brick2: test02:/data/brick1/gv0Options Reconfigured:transport.address-family: inetperformance.readdir-ahead: onnfs.disable: on 测试客户端安装卷，测试文件写入，为了简便操作，直接在server端进行测试： 12mount -t glusterfs test01:/gv0 /mntfor i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done 如果安装 client 端进行测试，安装所需依赖包命令如下： 1yum -y install glusterfs glusterfs-fuse GlusterFS 架构Distributed Glusterfs Volume： 1gluster volume create test-volume server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 Replicated Glusterfs Volume： 1gluster volume create test-volume replica 2 transport tcp server1:/exp1 server2:/exp2 Distributed Replicated Glusterfs Volume： 1gluster volume create test-volume replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 Striped Glusterfs Volume： 1gluster volume create test-volume stripe 2 transport tcp server1:/exp1 server2:/exp2 Distributed Striped Glusterfs Volume： 1gluster volume create test-volume stripe 4 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8]]></content>
@@ -203,6 +214,30 @@
       </categories>
       <tags>
         <tag>glusterfs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GitLab 安装、迁移和升级]]></title>
+    <url>%2F2017%2F03%2F15%2Fgitlab-install-migration-upgrade%2F</url>
+    <content type="text"><![CDATA[记录GitLab 安装、迁移和升级命令。 安装介质可以从 gitlab 官网 选择对应的操作系统版本进行下载 操作系统版本：CentOS 6.5_64 GitLab 版本：7.14.1 GitLab 安装123456yum install curl openssh-server postfix cronieservice postfix startchkconfig postfix onchkconfig iptables offservice iptables stoprpm -ivh gitlab-ce-7.14.1-ce.0.el6.x86_64.rpm GitLab 迁移 注意：gitlab 版本要保持一致 12345cp 1454176910_gitlab_backup.tar /var/opt/gitlab/backupsgitlab-ctl stop unicorngitlab-ctl stop sidekiqgitlab-rake gitlab:backup:restore BACKUP=1454176910gitlab-ctl start GitLab 升级 注意：gitlab 服务器升级版本会自动备份 1rpm -Uvh gitlab-ce-8.3.1-ce.1.el6.x86_64.rpm]]></content>
+      <categories>
+        <category>revision control</category>
+        <category>gitlab</category>
+      </categories>
+      <tags>
+        <tag>gitlab</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[zabbix 3.0.7 安装]]></title>
+    <url>%2F2017%2F03%2F15%2Fzabbix-install%2F</url>
+    <content type="text"><![CDATA[在测试环境安装配置 zabbix，用来进行学习。 zabbix 需要运行在 LAMP 上，具体配置要求可以查看 zabbix 3.0 documentation CentOS 版本：6.7 x86_64 MySQL 版本为：5.7.12 PHP 版本为：5.5.38 Apache 版本为：2.2.15 安装 MySQL 5.7使用二进制安装包，安装步骤请参考：二进制安装 MySQL 5.7.18 安装 PHP 5.5安装 YUM 源 1rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm 安装 PHP 1yum install httpd php55w php55w-mysql php55w-gd php55w-imap php55w-ldap php55w-odbc php55w-pear php55w-xml php55w-xmlrpc php55w-mcrypt php55w-mbstring php55w-devel php55w-pecl-memcached php55w-common php55w-pdo php55w-cli php55w-pecl-memcache php55w-bcmath php55w-fpm 修改 /etc/php.ini 文件 1mysqli.default_socket = /mysql/data/mysql.sock 安装 zabbix 3.0.7更新 curl 1234567cd /etc/yum.repos.drename .repo .bak *.repowget http://mirrors.163.com/.help/CentOS6-Base-163.reposed -i 's@^exclude@#exclude@' /etc/yum.confyum clean allyum makecacheyum install curl libcurl libcurl-devel 安装 zabbix 源 12rpm -ivh http://repo.zabbix.com/zabbix/3.0/rhel/6/x86_64/zabbix-release-3.0-1.el6.noarch.rpmyum install zabbix-server-mysql zabbix-web-mysql 创建 zabbix 数据库 123create database zabbix character set utf8 collate utf8_bin;grant all privileges on zabbix.* to zabbix@localhost identified by 'xxxx';zcat /usr/share/doc/zabbix-server-mysql-3.0.7/create.sql.gz | mysql -uzabbix -p 配置 zabbix 数据库连接 12345cat /etc/zabbix/zabbix_server.confDBHost=localhostDBName=zabbixDBUser=zabbixDBPassword=xxxx 添加 zabbix 的 apache 配置 123cp /usr/share/doc/zabbix-web-3.0.7/httpd22-example.conf /etc/httpd/conf.d/zabbix.confsed -i "s@# php_value date.timezone Europe/Riga@php_value date.timezone Asia/Shanghai@" /etc/httpd/conf.d/zabbix.confservice httpd restart 访问 http://ip/zabbix 进行初始化配置。]]></content>
+      <categories>
+        <category>monitor</category>
+      </categories>
+      <tags>
+        <tag>zabbix</tag>
       </tags>
   </entry>
   <entry>
@@ -226,30 +261,6 @@
       </categories>
       <tags>
         <tag>centos6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[zabbix 3.0.7 安装]]></title>
-    <url>%2F2017%2F03%2F15%2Fzabbix-install%2F</url>
-    <content type="text"><![CDATA[在测试环境安装配置 zabbix，用来进行学习。 zabbix 需要运行在 LAMP 上，具体配置要求可以查看 zabbix 3.0 documentation CentOS 版本：6.7 x86_64 MySQL 版本为：5.7.12 PHP 版本为：5.5.38 Apache 版本为：2.2.15 安装 MySQL 5.7使用二进制安装包，安装步骤请参考：二进制安装 MySQL 5.7.18 安装 PHP 5.5安装 YUM 源 1rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm 安装 PHP 1yum install httpd php55w php55w-mysql php55w-gd php55w-imap php55w-ldap php55w-odbc php55w-pear php55w-xml php55w-xmlrpc php55w-mcrypt php55w-mbstring php55w-devel php55w-pecl-memcached php55w-common php55w-pdo php55w-cli php55w-pecl-memcache php55w-bcmath php55w-fpm 修改 /etc/php.ini 文件 1mysqli.default_socket = /mysql/data/mysql.sock 安装 zabbix 3.0.7更新 curl 1234567cd /etc/yum.repos.drename .repo .bak *.repowget http://mirrors.163.com/.help/CentOS6-Base-163.reposed -i 's@^exclude@#exclude@' /etc/yum.confyum clean allyum makecacheyum install curl libcurl libcurl-devel 安装 zabbix 源 12rpm -ivh http://repo.zabbix.com/zabbix/3.0/rhel/6/x86_64/zabbix-release-3.0-1.el6.noarch.rpmyum install zabbix-server-mysql zabbix-web-mysql 创建 zabbix 数据库 123create database zabbix character set utf8 collate utf8_bin;grant all privileges on zabbix.* to zabbix@localhost identified by 'xxxx';zcat /usr/share/doc/zabbix-server-mysql-3.0.7/create.sql.gz | mysql -uzabbix -p 配置 zabbix 数据库连接 12345cat /etc/zabbix/zabbix_server.confDBHost=localhostDBName=zabbixDBUser=zabbixDBPassword=xxxx 添加 zabbix 的 apache 配置 123cp /usr/share/doc/zabbix-web-3.0.7/httpd22-example.conf /etc/httpd/conf.d/zabbix.confsed -i "s@# php_value date.timezone Europe/Riga@php_value date.timezone Asia/Shanghai@" /etc/httpd/conf.d/zabbix.confservice httpd restart 访问 http://ip/zabbix 进行初始化配置。]]></content>
-      <categories>
-        <category>monitor</category>
-      </categories>
-      <tags>
-        <tag>zabbix</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[使用 acme.sh 工具申请 Let's Encrypt 证书]]></title>
-    <url>%2F2017%2F03%2F15%2Facme.sh-manual%2F</url>
-    <content type="text"><![CDATA[使用 acme.sh 工具申请 Let’s Encrypt 免费证书。 操作系统版本：CentOS 6.7_64 acme.sh 安装下载 acme.sh 代码12345678[root@UCT-PRD ~]# git clone https://github.com/Neilpang/acme.sh.gitInitialized empty Git repository in /root/acme.sh/.git/remote: Counting objects: 2697, done.remote: Compressing objects: 100% (8/8), done.remote: Total 2697 (delta 2), reused 0 (delta 0), pack-reused 2689Receiving objects: 100% (2697/2697), 835.64 KiB | 21 KiB/s, done.Resolving deltas: 100% (1252/1252), done.[root@UCT-PRD ~]# 安装 acme.sh1234567891011121314151617[root@UCT-PRD ~]# cd acme.sh[root@UCT-PRD acme.sh]# lsacme.sh deploy dnsapi README.md[root@UCT-PRD acme.sh]# ./acme.sh --install[Mon Dec 12 14:01:44 CST 2016] It is recommended to install nc first, try to install 'nc' or 'netcat'.[Mon Dec 12 14:01:44 CST 2016] We use nc for standalone server if you use standalone mode.[Mon Dec 12 14:01:44 CST 2016] If you don't use standalone mode, just ignore this warning.[Mon Dec 12 14:01:44 CST 2016] Installing to /root/.acme.sh[Mon Dec 12 14:01:44 CST 2016] Installed to /root/.acme.sh/acme.sh[Mon Dec 12 14:01:44 CST 2016] Installing alias to '/root/.bashrc'[Mon Dec 12 14:01:44 CST 2016] OK, Close and reopen your terminal to start using acme.sh[Mon Dec 12 14:01:44 CST 2016] Installing alias to '/root/.cshrc'[Mon Dec 12 14:01:44 CST 2016] Installing alias to '/root/.tcshrc'[Mon Dec 12 14:01:44 CST 2016] Installing cron job[Mon Dec 12 14:01:44 CST 2016] Good, bash is found, so change the shebang to use bash as prefered.[Mon Dec 12 14:01:44 CST 2016] OK[root@UCT-PRD acme.sh]# acme.sh 使用申请证书 注意：/var/www/html 目录要有写入权限 1234567891011121314151617181920212223242526272829[root@UCT-PRD acme.sh]# ./acme.sh --issue -d iamtim.wang -d www.iamtim.wang -w /var/www/html[Mon Dec 12 14:03:31 CST 2016] Registering account[Mon Dec 12 14:03:55 CST 2016] Registered[Mon Dec 12 14:04:07 CST 2016] Update success.[Mon Dec 12 14:04:07 CST 2016] Creating domain key[Mon Dec 12 14:04:07 CST 2016] Multi domain='DNS:www.iamtim.wang'[Mon Dec 12 14:04:07 CST 2016] Getting domain auth token for each domain[Mon Dec 12 14:04:07 CST 2016] Getting webroot for domain='iamtim.wang'[Mon Dec 12 14:04:07 CST 2016] _w='/var/www/html'[Mon Dec 12 14:04:07 CST 2016] Getting new-authz for domain='iamtim.wang'[Mon Dec 12 14:04:19 CST 2016] The new-authz request is ok.[Mon Dec 12 14:04:19 CST 2016] Getting webroot for domain='www.iamtim.wang'[Mon Dec 12 14:04:19 CST 2016] _w='/var/www/html'[Mon Dec 12 14:04:19 CST 2016] Getting new-authz for domain='www.iamtim.wang'[Mon Dec 12 14:04:31 CST 2016] The new-authz request is ok.[Mon Dec 12 14:04:31 CST 2016] Verifying:iamtim.wang[Mon Dec 12 14:04:57 CST 2016] Success[Mon Dec 12 14:04:57 CST 2016] Verifying:www.iamtim.wang[Mon Dec 12 14:05:21 CST 2016] Success[Mon Dec 12 14:05:21 CST 2016] Verify finished, start to sign.[Mon Dec 12 14:05:33 CST 2016] Cert success.-----BEGIN CERTIFICATE-----...-----END CERTIFICATE-----[Mon Dec 12 14:05:33 CST 2016] Your cert is in /root/.acme.sh/iamtim.wang/iamtim.wang.cer[Mon Dec 12 14:05:33 CST 2016] Your cert key is in /root/.acme.sh/iamtim.wang/iamtim.wang.key[Mon Dec 12 14:05:45 CST 2016] The intermediate CA cert is in /root/.acme.sh/iamtim.wang/ca.cer[Mon Dec 12 14:05:45 CST 2016] And the full chain certs is there: /root/.acme.sh/iamtim.wang/fullchain.cer[root@UCT-PRD acme.sh]# 拷贝证书到相应目录证书申请成功后，拷贝证书到相应目录中(ssl.conf定义位置)： 123456789[root@UCT-PRD acme.sh]# ./acme.sh --installcert -d iamtim.wang --certpath /etc/httpd/conf/iamtim.wang/cert.pem --keypath /etc/httpd/conf/iamtim.wang/key.pem --fullchainpath /etc/httpd/conf/iamtim.wang/fullchain.pem --reloadcmd "service httpd restart"[Mon Dec 12 14:13:40 CST 2016] Installing cert to:/etc/httpd/conf/iamtim.wang/cert.pem[Mon Dec 12 14:13:40 CST 2016] Installing key to:/etc/httpd/conf/iamtim.wang/key.pem[Mon Dec 12 14:13:40 CST 2016] Installing full chain to:/etc/httpd/conf/iamtim.wang/fullchain.pem[Mon Dec 12 14:13:40 CST 2016] Run Le_ReloadCmd: service httpd restartStopping httpd: [ OK ]Starting httpd: [ OK ][Mon Dec 12 14:13:40 CST 2016] Reload success[root@UCT-PRD acme.sh]# 参考 https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E]]></content>
-      <categories>
-        <category>https</category>
-      </categories>
-      <tags>
-        <tag>https</tag>
-        <tag>letsencrypt</tag>
-        <tag>acme.sh</tag>
       </tags>
   </entry>
 </search>
