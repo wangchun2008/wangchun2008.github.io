@@ -116,12 +116,12 @@
 <meta property="og:site_name" content="懒癌晚期的中年大叔">
 <meta property="og:description" content="在两台虚拟机上安装配置 GlusterFS 文件系统，用于学习与测试。  服务器信息：test01(192.168.115.131)、test02(192.168.155.132) OS版本：CentOS release 6.7 (Final) GlusterFS 版本：3.8.4">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://omxqsw5np.bkt.clouddn.com/images/glusterfs-install-and-settings-for-test-environment.png">
-<meta property="og:updated_time" content="2018-05-23T06:53:53.736Z">
+<meta property="og:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/glusterfs-install-and-settings-for-test-environment.png">
+<meta property="og:updated_time" content="2018-06-11T06:18:32.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装配置 GlusterFS 文件系统">
 <meta name="twitter:description" content="在两台虚拟机上安装配置 GlusterFS 文件系统，用于学习与测试。  服务器信息：test01(192.168.115.131)、test02(192.168.155.132) OS版本：CentOS release 6.7 (Final) GlusterFS 版本：3.8.4">
-<meta name="twitter:image" content="http://omxqsw5np.bkt.clouddn.com/images/glusterfs-install-and-settings-for-test-environment.png">
+<meta name="twitter:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/glusterfs-install-and-settings-for-test-environment.png">
 
 
 
@@ -397,7 +397,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 14:53:53" itemprop="dateModified" datetime="2018-05-23T14:53:53+08:00">2018-05-23</time>
+                <time title="修改时间：2018-06-11 14:18:32" itemprop="dateModified" datetime="2018-06-11T14:18:32+08:00">2018-06-11</time>
               
             
           </span>
@@ -475,7 +475,7 @@
       
 
       
-        <p><img src="http://omxqsw5np.bkt.clouddn.com/images/glusterfs-install-and-settings-for-test-environment.png" alt="安装配置 GlusterFS 文件系统"></p>
+        <p><img src="https://iamtimwang.oss-cn-beijing.aliyuncs.com/glusterfs-install-and-settings-for-test-environment.png" alt="安装配置 GlusterFS 文件系统"></p>
 <p>在两台虚拟机上安装配置 GlusterFS 文件系统，用于学习与测试。</p>
 <blockquote>
 <p>服务器信息：test01(192.168.115.131)、test02(192.168.155.132)</p>
@@ -503,15 +503,15 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mount -t glusterfs test01:/gv0 /mnt</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq -w 1 100`; <span class="keyword">do</span> cp -rp /var/<span class="built_in">log</span>/messages /mnt/copy-test-<span class="variable">$i</span>; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <p>如果安装 client 端进行测试，安装所需依赖包命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install glusterfs glusterfs-fuse</span><br></pre></td></tr></table></figure>
-<h1 id="GlusterFS-架构"><a href="#GlusterFS-架构" class="headerlink" title="GlusterFS 架构"></a>GlusterFS 架构</h1><p><a href="/images/Distributed-Glusterfs-Volume.png">Distributed Glusterfs Volume：</a></p>
+<h1 id="GlusterFS-架构"><a href="#GlusterFS-架构" class="headerlink" title="GlusterFS 架构"></a>GlusterFS 架构</h1><p><a href="https://iamtimwang.oss-cn-beijing.aliyuncs.com/Distributed-Glusterfs-Volume.png" target="_blank" rel="noopener">Distributed Glusterfs Volume：</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gluster volume create <span class="built_in">test</span>-volume server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4</span><br></pre></td></tr></table></figure>
-<p><a href="/images/Replicated-Glusterfs-Volume.png">Replicated Glusterfs Volume：</a></p>
+<p><a href="https://iamtimwang.oss-cn-beijing.aliyuncs.com/Replicated-Glusterfs-Volume.png" target="_blank" rel="noopener">Replicated Glusterfs Volume：</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gluster volume create <span class="built_in">test</span>-volume replica 2 transport tcp server1:/exp1 server2:/exp2</span><br></pre></td></tr></table></figure>
-<p><a href="/images/Distributed-Replicated-Glusterfs-Volume.png">Distributed Replicated Glusterfs Volume：</a></p>
+<p><a href="https://iamtimwang.oss-cn-beijing.aliyuncs.com/Distributed-Replicated-Glusterfs-Volume.png" target="_blank" rel="noopener">Distributed Replicated Glusterfs Volume：</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gluster volume create <span class="built_in">test</span>-volume replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4</span><br></pre></td></tr></table></figure>
-<p><a href="/images/Striped-Glusterfs-Volume.png">Striped Glusterfs Volume：</a></p>
+<p><a href="https://iamtimwang.oss-cn-beijing.aliyuncs.com/Striped-Glusterfs-Volume.png" target="_blank" rel="noopener">Striped Glusterfs Volume：</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gluster volume create <span class="built_in">test</span>-volume stripe 2 transport tcp server1:/exp1 server2:/exp2</span><br></pre></td></tr></table></figure>
-<p><a href="/images/Distributed-Striped-Glusterfs-Volume.png">Distributed Striped Glusterfs Volume：</a></p>
+<p><a href="https://iamtimwang.oss-cn-beijing.aliyuncs.com/Distributed-Striped-Glusterfs-Volume.png" target="_blank" rel="noopener">Distributed Striped Glusterfs Volume：</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gluster volume create <span class="built_in">test</span>-volume stripe 4 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8</span><br></pre></td></tr></table></figure>
 
       
