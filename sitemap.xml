@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iamtim.wang/install-ss-client/</loc>
+    
+    <lastmod>2018-09-13T05:39:23.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtim.wang/pmm-install/</loc>
+    
+    <lastmod>2018-09-12T04:44:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iamtim.wang/resume/index.html</loc>
     
     <lastmod>2018-09-07T03:38:03.688Z</lastmod>
@@ -68,13 +82,6 @@
     <loc>https://iamtim.wang/redis-install/</loc>
     
     <lastmod>2018-06-11T06:17:17.125Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iamtim.wang/pmm-install/</loc>
-    
-    <lastmod>2018-06-11T06:17:11.159Z</lastmod>
     
   </url>
   

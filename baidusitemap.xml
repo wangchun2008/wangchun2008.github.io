@@ -3,6 +3,46 @@
 
 
     
+  <url>
+    <loc>https://iamtim.wang/install-ss-client/</loc>
+    <lastmod>2018-09-13T05:39:23.817Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS7 安装 Shadowsocks 客户端</title>
+        <pubTime>2018-09-11T16:00:01.000Z</pubTime>
+        
+        <tag>shadowsocks</tag>
+         
+         
+           
+             
+              <breadCrumb title="other" url="https://iamtim.wang/categories/other/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://iamtim.wang/pmm-install/</loc>
+    <lastmod>2018-09-12T04:44:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>安装配置 PMM</title>
+        <pubTime>2018-05-22T16:00:01.000Z</pubTime>
+        
+        <tag>PMM</tag>
+         
+         
+           
+             
+              <breadCrumb title="monitor" url="https://iamtim.wang/categories/monitor/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://iamtim.wang/glusterfs-install-and-settings-for-test-environment/</loc>
@@ -198,26 +238,6 @@
           
              
               <breadCrumb title="redis" url="https://iamtim.wang/categories/database/redis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://iamtim.wang/pmm-install/</loc>
-    <lastmod>2018-06-11T06:17:11.159Z</lastmod>
-    <data>
-        <display>
-        <title>安装配置 PMM</title>
-        <pubTime>2018-05-22T16:00:01.000Z</pubTime>
-        
-        <tag>PMM</tag>
-         
-         
-           
-             
-              <breadCrumb title="monitor" url="https://iamtim.wang/categories/monitor/"/>
           
         </display>
     </data>
