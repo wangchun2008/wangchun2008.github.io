@@ -4,8 +4,55 @@
 
     
   <url>
+    <loc>https://iamtim.wang/mysql-optimization/</loc>
+    <lastmod>2018-10-10T06:47:52.906Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 服务器选型与优化</title>
+        <pubTime>2018-09-18T16:00:01.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="database" url="https://iamtim.wang/categories/database/"/>
+          
+             
+              <breadCrumb title="mysql" url="https://iamtim.wang/categories/database/mysql/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://iamtim.wang/mysql-prompt/</loc>
+    <lastmod>2018-10-10T06:31:29.555Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 命令行提示符配置</title>
+        <pubTime>2018-10-09T16:00:01.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="database" url="https://iamtim.wang/categories/database/"/>
+          
+             
+              <breadCrumb title="mysql" url="https://iamtim.wang/categories/database/mysql/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>https://iamtim.wang/install-ss-client/</loc>
-    <lastmod>2018-09-13T05:43:52.140Z</lastmod>
+    <lastmod>2018-09-13T05:44:04.462Z</lastmod>
     <data>
         <display>
         <title>CentOS7 安装 Shadowsocks 客户端</title>
@@ -42,7 +89,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>https://iamtim.wang/glusterfs-install-and-settings-for-test-environment/</loc>
@@ -139,9 +185,9 @@
         <title>使用 zabbix 监控 DELL 服务器</title>
         <pubTime>2017-05-14T16:00:01.000Z</pubTime>
         
-        <tag>dell</tag>
-         
         <tag>zabbix</tag>
+         
+        <tag>dell</tag>
          
         <tag>omsa</tag>
          

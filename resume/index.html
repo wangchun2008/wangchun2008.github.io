@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="懒癌晚期的中年大叔">
 <meta property="og:description" content="个人信息   Key Value Key Value     姓名 王纯 期望职位 系统工程师，运维工程师   学历 本科 期望薪资 税前月薪 20k~30k   大学 北京联合大学 - 信息学院 期望城市 北京   工作年限 10年 手机 18500080326   个人主页 https://iamtim.wang 邮箱 imtimwang@gmail.com     个人简介我有 10 年的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-07T03:38:03.688Z">
+<meta property="og:updated_time" content="2018-09-16T12:05:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简    历">
 <meta name="twitter:description" content="个人信息   Key Value Key Value     姓名 王纯 期望职位 系统工程师，运维工程师   学历 本科 期望薪资 税前月薪 20k~30k   大学 北京联合大学 - 信息学院 期望城市 北京   工作年限 10年 手机 18500080326   个人主页 https://iamtim.wang 邮箱 imtimwang@gmail.com     个人简介我有 10 年的">
@@ -464,6 +464,22 @@
 <h2 id="中科软科技股份有限公司-（-2010-年-9-月-2012-年-7-月-）"><a href="#中科软科技股份有限公司-（-2010-年-9-月-2012-年-7-月-）" class="headerlink" title="中科软科技股份有限公司 （ 2010 年 9 月 ~ 2012 年 7 月 ）"></a>中科软科技股份有限公司 （ 2010 年 9 月 ~ 2012 年 7 月 ）</h2><p>期间本人任职系统工程师。在中国保险行业协会车险信息平台项目组驻场，负责所有 WAS 平台的建设维护工作。平台包括 134 台应用服务器，配置有 300 多个 WAS 节点，30 个应用集群。日常工作是对 HP 刀片服务器、Redhat 系统、WAS 集群巡检，对硬件、软件故障进行处理。</p>
 <h2 id="北京中科大洋科技发展股份有限公司-（-2008-年-7-月-2010-年-7-月-）"><a href="#北京中科大洋科技发展股份有限公司-（-2008-年-7-月-2010-年-7-月-）" class="headerlink" title="北京中科大洋科技发展股份有限公司 （ 2008 年 7 月 ~ 2010 年 7 月 ）"></a>北京中科大洋科技发展股份有限公司 （ 2008 年 7 月 ~ 2010 年 7 月 ）</h2><p>期间本人任职运维工程师，在中央电视台音像资料馆驻场。2 年中与同事一起维护资料馆媒体资源管理系统的稳定运行。 日常工作是对 Oracle 数据库，Windows 平台、Unix 平台服务器，EMC 盘阵、HP 盘阵、UIT 盘阵、日立盘阵，数据流磁带库等进行维护与保养。</p>
 <hr>
+<h1 id="项目经验"><a href="#项目经验" class="headerlink" title="项目经验"></a>项目经验</h1><h2 id="心电系统自动化部署（DevOps）"><a href="#心电系统自动化部署（DevOps）" class="headerlink" title="心电系统自动化部署（DevOps）"></a>心电系统自动化部署（DevOps）</h2><p>随着业务增长，项目版本升级频率增加，每次手动更新代码都要一再确认代码、配置等信息，费时费力还容易出错。为了提高部署效率，学习相关知识，开始建立自动化部署平台。步骤如下：</p>
+<ul>
+<li>制定部署流程，编写 PPT 与同事讨论。</li>
+<li>确认各个环节操作规范、数据格式规范。</li>
+<li>基于 Gitlab + Jenkins + Ansible 方式搭建自动化部署平台。</li>
+<li>调用 Python 脚本进行 API 测试。</li>
+</ul>
+<p>自动化部署平台完成后，测试环境实现了自动更新部署，生产环境手动触发更新部署流程。大大减小升级的失败几率，缩减了交付时间，节约了人力成本。</p>
+<h2 id="心电系统重构"><a href="#心电系统重构" class="headerlink" title="心电系统重构"></a>心电系统重构</h2><p>我们的心电监测系统中用户数据是存放在数据库中的。在生产环境运行一段时间后，数据库增长很快。从性能方面、运维方面出现很多问题。这是架构设计方面的问题，为了系统未来可以健康发展，这个问题必须尽早解决。<br>在与心电组同事开会讨论后，决定重构心电监测系统。我完成如下工作：</p>
+<ul>
+<li>重构数据库，优化结构，分离心电数据。</li>
+<li>评估选型文件系统，最后选择 FastDFS 作为存储心电数据的文件系统。</li>
+<li>搭建重构的心电系统环境，支持自动部署更新。</li>
+<li>对重构后的系统部署到公有云（阿里云、腾讯云）进行可行性评估。包括技术差异、架构变更、投入估算等方面，确认迁移到公有云方案可行。</li>
+</ul>
+<p>目前重构的心电系统已经进入测试阶段。</p>
 <h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1><p>以下为我熟练使用的技能：</p>
 <ul>
 <li>操作系统：Linux / Solaris / Windows</li>
@@ -550,7 +566,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -713,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#个人信息"><span class="nav-number">1.</span> <span class="nav-text">个人信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#个人简介"><span class="nav-number">2.</span> <span class="nav-text">个人简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作经历"><span class="nav-number">3.</span> <span class="nav-text">工作经历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安华亿能医疗影像科技（北京）有限公司-（-2015-年-4-月-今-）"><span class="nav-number">3.1.</span> <span class="nav-text">安华亿能医疗影像科技（北京）有限公司 （ 2015 年 4 月 ~ 今 ）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库运维"><span class="nav-number">3.1.1.</span> <span class="nav-text">数据库运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统运维"><span class="nav-number">3.1.2.</span> <span class="nav-text">系统运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它工作"><span class="nav-number">3.1.3.</span> <span class="nav-text">其它工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#北京新锐互动商业网络有限公司-（-2012-年-7-月-2015-年-4-月-）"><span class="nav-number">3.2.</span> <span class="nav-text">北京新锐互动商业网络有限公司 （ 2012 年 7 月 ~ 2015 年 4 月 ）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中债信息网建设运维"><span class="nav-number">3.2.1.</span> <span class="nav-text">中债信息网建设运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IBM-PORTAL-系统环境建设"><span class="nav-number">3.2.2.</span> <span class="nav-text">IBM PORTAL 系统环境建设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它项目"><span class="nav-number">3.2.3.</span> <span class="nav-text">其它项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中科软科技股份有限公司-（-2010-年-9-月-2012-年-7-月-）"><span class="nav-number">3.3.</span> <span class="nav-text">中科软科技股份有限公司 （ 2010 年 9 月 ~ 2012 年 7 月 ）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#北京中科大洋科技发展股份有限公司-（-2008-年-7-月-2010-年-7-月-）"><span class="nav-number">3.4.</span> <span class="nav-text">北京中科大洋科技发展股份有限公司 （ 2008 年 7 月 ~ 2010 年 7 月 ）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#技能清单"><span class="nav-number">4.</span> <span class="nav-text">技能清单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#致谢"><span class="nav-number">5.</span> <span class="nav-text">致谢</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#个人信息"><span class="nav-number">1.</span> <span class="nav-text">个人信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#个人简介"><span class="nav-number">2.</span> <span class="nav-text">个人简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作经历"><span class="nav-number">3.</span> <span class="nav-text">工作经历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安华亿能医疗影像科技（北京）有限公司-（-2015-年-4-月-今-）"><span class="nav-number">3.1.</span> <span class="nav-text">安华亿能医疗影像科技（北京）有限公司 （ 2015 年 4 月 ~ 今 ）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库运维"><span class="nav-number">3.1.1.</span> <span class="nav-text">数据库运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统运维"><span class="nav-number">3.1.2.</span> <span class="nav-text">系统运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它工作"><span class="nav-number">3.1.3.</span> <span class="nav-text">其它工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#北京新锐互动商业网络有限公司-（-2012-年-7-月-2015-年-4-月-）"><span class="nav-number">3.2.</span> <span class="nav-text">北京新锐互动商业网络有限公司 （ 2012 年 7 月 ~ 2015 年 4 月 ）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中债信息网建设运维"><span class="nav-number">3.2.1.</span> <span class="nav-text">中债信息网建设运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IBM-PORTAL-系统环境建设"><span class="nav-number">3.2.2.</span> <span class="nav-text">IBM PORTAL 系统环境建设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它项目"><span class="nav-number">3.2.3.</span> <span class="nav-text">其它项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中科软科技股份有限公司-（-2010-年-9-月-2012-年-7-月-）"><span class="nav-number">3.3.</span> <span class="nav-text">中科软科技股份有限公司 （ 2010 年 9 月 ~ 2012 年 7 月 ）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#北京中科大洋科技发展股份有限公司-（-2008-年-7-月-2010-年-7-月-）"><span class="nav-number">3.4.</span> <span class="nav-text">北京中科大洋科技发展股份有限公司 （ 2008 年 7 月 ~ 2010 年 7 月 ）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目经验"><span class="nav-number">4.</span> <span class="nav-text">项目经验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#心电系统自动化部署（DevOps）"><span class="nav-number">4.1.</span> <span class="nav-text">心电系统自动化部署（DevOps）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心电系统重构"><span class="nav-number">4.2.</span> <span class="nav-text">心电系统重构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#技能清单"><span class="nav-number">5.</span> <span class="nav-text">技能清单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#致谢"><span class="nav-number">6.</span> <span class="nav-text">致谢</span></a></li></ol></div>
             
 
           </div>

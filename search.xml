@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL 命令行提示符配置]]></title>
+    <url>%2Fmysql-prompt%2F</url>
+    <content type="text"><![CDATA[个性化配置 MySQL 命令行提示符不仅为了美观，而且必要的提示信息可以减小一些人为错误操作的几率。 MySQL 版本：5.7.12 MySQL 命令行提示符配置提示符配置项说明： Option Description \C The current connection identifier \c A counter that increments for each statement you issue \D The full current date \d The default database \h The server host \l The current delimiter \m Minutes of the current time \n A newline character \O The current month in three-letter format (Jan, Feb, …) \o The current month in numeric format \P am/pm \p The current TCP/IP port or socket file \R The current time, in 24-hour military time (0–23) \r The current time, standard 12-hour time (1–12) \S Semicolon \s Seconds of the current time \t A tab character \U Your full user_name@host_name account name \u Your user name \v The server version \w The current day of the week in three-letter format (Mon, Tue, …) \Y The current year, four digits \y The current year, two digits _ A space \ A space (a space follows the backslash) \’ Single quote \” Double quote \ A literal \ backslash character \x x, for any “x” not listed above 通过修改环境变量制定提示符： 12345mysql&gt;mysql&gt; prompt (\U)[\d]&gt;\_PROMPT set to '(\U)[\d]&gt;\_'(root@localhost)[mysql]&gt;(root@localhost)[mysql]&gt; 12345(root@localhost)[mysql]&gt;(root@localhost)[mysql]&gt; prompt (\U) \D [\d]&gt;\_PROMPT set to '(\U) \D [\d]&gt;\_'(root@localhost) Wed Oct 10 14:00:23 2018 [mysql]&gt;(root@localhost) Wed Oct 10 14:00:29 2018 [mysql]&gt; 12345(root@localhost) Wed Oct 10 14:00:30 2018 [mysql]&gt;(root@localhost) Wed Oct 10 14:00:30 2018 [mysql]&gt; promptReturning to default PROMPT of mysql&gt;mysql&gt;mysql&gt; 通过修改 MySQL 配置文件制定提示符： 12[mysql]prompt = '(\U)[\d]&gt;\_' 参考 https://dev.mysql.com/doc/refman/5.7/en/mysql-commands.html]]></content>
+      <categories>
+        <category>database</category>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL 服务器选型与优化]]></title>
+    <url>%2Fmysql-optimization%2F</url>
+    <content type="text"><![CDATA[本文面向单机单实例使用本地磁盘的 MySQL 服务器，列出需要优化的部分。内容仅供参考，一切以压力测试数据为准，切勿迷信参数配置。 MySQL 服务器选型与优化使用本地磁盘的 MySQL 服务器硬件配置参考： 硬件 BIOS 关闭 CPU 的节能模式，调整内存频率为最佳性能。 CPU 选择高主频、高缓存处理器，部署单实例 MySQL 的话，核心数量不需太多。 硬盘 SSD：不差钱的选择 SSD 硬盘组建 RAID，IO 性能是极好的。 HDD：选择高转速，多硬盘组建 RAID10。根据存储不同类型文件（数据库和索引文件、事务日志文件、二进制文件、常规日志、临时文件和临时表），划分多个 RAID。 RAID卡 选择带电池，并且缓存大的 RAID 卡。强制开启 WriteBack 策略。 内存 部署单实例 MySQL 的话，64GB 内存够用。 操作系统 文件系统 跟随操作系统使用的文件系统即可。CentOS6 默认使用 EXT4 文件系统，CentOS7 默认使用 XFS 文件系统。 挂载分区时，使用 noatime、nodiratime、nobarrier 即可。 磁盘队列调度策略 1noop anticipatory [deadline] cfq SWAP SWAP 规划分区大小与内存一致（64GB）。我们希望 MySQL 尽量不要使用 SWAP 空间，RAM 与 SWAP 交换尽量懒惰。 123/proc/sys/vm/swappiness =&lt; 10/proc/sys/vm/vm.dirty_ratio =&lt; 5/proc/sys/vm/vm.dirty_background_ratio =&lt; 10 内存分配器 使用 jemalloc 管理内存可以提高 MySQL 性能，降低系统 CPU 和 RAM 资源的利用。 网络 优化 TCP 参数，更多参数视运行情况设置。 12net.ipv4.ip_local_port_range = 1024 65000net.ipv4.tcp_fin_timeout = 30 NUMA 架构 12numa = offnumactl --interleave=all 资源限制 1ulimit -SH 65535 MySQL 配置文件欲知后事如何，且听下回分解。]]></content>
+      <categories>
+        <category>database</category>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CentOS7 安装 Shadowsocks 客户端]]></title>
     <url>%2Finstall-ss-client%2F</url>
     <content type="text"><![CDATA[服务器无法访问 GG 资源，在 CentOS7 环境安装配置 Shadowsocks 客户端、Privoxy 程序，用于方便快捷的编译 Go 程序、安装 K8S 等。 CentOS 版本：7.5 x86_64 Shadowsocks 版本：2.8.2 Privoxy 版本：3.0.26 安装配置 Shadowsocks安装 YUM 源 12yum install -y epel-release curlyum makecache fast 安装 pip 1yum install -y python-pip 创建 pip 源 123456mkdir /root/.pipcat &gt; /root/.pip/pip.conf &lt;&lt; EOF[global]trusted-host = pypi.douban.comindex-url = http://pypi.douban.com/simpleEOF 升级 pip 1pip install --upgrade pip 安装 shadowsocks 1pip install shadowsocks 创建 shadowsocks 配置文件 1234567891011121314mkdir /etc/shadowsockscat &gt; /etc/shadowsocks/shadowsocks.json &lt;&lt; EOF&#123; "server":"SS 服务端 IP", "server_port":"SS 服务端端口", "local_address": "127.0.0.1", "local_port":1080, "password":"SS 服务端密码", "timeout":300, "method":"aes-256-cfb", "fast_open": false, "workers": 1&#125;EOF 创建 shadowsocks 服务 123456789cat &gt; /etc/systemd/system/shadowsocks.service &lt;&lt; EOF[Unit]Description=Shadowsocks[Service]TimeoutStartSec=0ExecStart=/usr/bin/sslocal -c /etc/shadowsocks/shadowsocks.json[Install]WantedBy=multi-user.targetEOF 启动 shadowsocks 服务 123systemctl enable shadowsocks.servicesystemctl start shadowsocks.servicesystemctl status shadowsocks 检查 shadowsocks 客户端配置，正常会返回 shadowsocks 服务端 IP 1curl --socks5 127.0.0.1:1080 http://httpbin.org/ip 安装配置 privoxyYUM 安装 privoxy 1yum install privoxy 修改 privoxy 配置文件 /etc/privoxy/config 12listen-address 127.0.0.1:8118forward-socks5t / 127.0.0.1:1080 . 启动 privoxy 服务 123systemctl enable privoxysystemctl start privoxysystemctl status privoxy 设置代理环境变量 123echo -e "export http_proxy=http://127.0.0.1:8118" &gt;&gt; /etc/profileecho -e "export https_proxy=http://127.0.0.1:8118" &gt;&gt; /etc/profilesource /etc/profile 测试访问 GG 1curl www.google.com]]></content>
@@ -42,8 +66,8 @@
         <category>monitor</category>
       </categories>
       <tags>
-        <tag>dell</tag>
         <tag>zabbix</tag>
+        <tag>dell</tag>
         <tag>omsa</tag>
       </tags>
   </entry>
@@ -178,15 +202,28 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[安装配置 FastDFS 文件系统]]></title>
-    <url>%2Ffastdfs-install-and-settings-for-test-environment%2F</url>
-    <content type="text"><![CDATA[在两台虚拟机上安装 FastDFS 文件系统，用来学习与测试。 服务器信息：test01(192.168.115.131)、test02(192.168.155.132) OS 版本：CentOS release 6.7 (Final) FastDFS 版本：5.08 上传安装介质（both）创建相关目录12mkdir /root/fastdfsmkdir -p /home/fastdfs_data/client /home/fastdfs_data/module /home/fastdfs_data/storage /home/fastdfs_data/tracker 上传安装文件到 /root/fastdfs 目录1234fastdfs-nginx-module_v1.16.tar.gzFastDFS_v5.08.tar.gzlibfastcommon-master.zipnginx-1.10.1.tar.gz 编译安装 libfastcommon（both）12345678910yum install -y gcc perl libeventcd /root/fastdfsunzip libfastcommon-master.zipcd libfastcommon-master./make.sh./make.sh installln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.soln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.soln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.soln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so 编译安装 FastDFS（both）12345cd /root/fastdfstar -zxvf FastDFS_v5.08.tar.gzcd FastDFS./make.sh./make.sh install 配置 FastDFS（both）配置 tracker拷贝配置文件： 1cp /etc/fdfs/tracker.conf.sample /etc/fdfs/tracker.conf 修改 /etc/fdfs/tracker.conf 参数： 1base_path=/home/fastdfs_data/tracker 启动 tracker 进程： 1/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart 配置 storage拷贝配置文件： 1cp /etc/fdfs/storage.conf.sample /etc/fdfs/storage.conf 修改 /etc/fdfs/storage.conf 参数： 1234base_path=/home/fastdfs_data/storagestore_path0=/home/fastdfs_datatracker_server=192.168.115.131:22122tracker_server=192.168.115.132:22122 启动 storage： 1/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart 配置 client拷贝配置文件： 1cp /etc/fdfs/client.conf.sample /etc/fdfs/client.conf 修改 /etc/fdfs/client.conf 参数： 123base_path=/home/fastdfs_data/clienttracker_server=192.168.115.131:22122tracker_server=192.168.115.132:22122 测试： 1fdfs_test /etc/fdfs/client.conf upload Lighthouse.jpg 以下输出表示配置正确： 123456789101112131415161718192021222324252627282930 This is FastDFS client test program v5.08Copyright (C) 2008, Happy Fish / YuQingFastDFS may be copied only under the terms of the GNU GeneralPublic License V3, which may be found in the FastDFS source kit.Please visit the FastDFS Home Page http://www.csource.org/for more detail.[2016-09-14 15:05:58] DEBUG - base_path=/home/fastdfs_data/client, connect_timeout=30, network_timeout=60, tracker_server_count=2, anti_steal_token=0, anti_steal_secret_key length=0, use_connection_pool=0, g_connection_pool_max_idle_time=3600s, use_storage_id=0, storage server id count: 0tracker_query_storage_store_list_without_group: server 1. group_name=, ip_addr=192.168.115.131, port=23000 server 2. group_name=, ip_addr=192.168.115.132, port=23000group_name=group1, ip_addr=192.168.115.132, port=23000storage_upload_by_filenamegroup_name=group1, remote_filename=M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960.jpgsource ip address: 192.168.115.132file timestamp=2016-09-14 15:05:58file size=561276file crc32=2713938340example file url: http://192.168.115.131/group1/M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960.jpgstorage_upload_slave_by_filenamegroup_name=group1, remote_filename=M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960_big.jpgsource ip address: 192.168.115.132file timestamp=2016-09-14 15:05:58file size=561276file crc32=2713938340example file url: http://192.168.115.131/group1/M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960_big.jpg 编译安装配置 nginx（test01）配置 fastdfs-nginx-module解压修改配置文件： 12cd /root/fastdfstar -zxvf fastdfs-nginx-module_v1.16.tar.gz 修改 fastdfs-nginx-module/src/config 参数： 1CORE_INCS="$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/" 拷贝配置文件： 123cp /root/fastdfs/FastDFS/conf/http.conf /etc/fdfs/cp /root/fastdfs/FastDFS/conf/mime.types /etc/fdfs/cp /root/fastdfs/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs 修改 /etc/fdfs/mod_fastdfs.conf 参数： 12345base_path=/home/fastdfs_data/moduletracker_server=192.168.115.131:22122tracker_server=192.168.115.132:22122url_have_group_name = truestore_path0=/home/fastdfs_data 编译安装 nginxyum 安装依赖包： 1yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel 创建日志目录： 1mkdir -p /usr/local/nginx /var/log/nginx /var/temp/nginx /var/lock/nginx 编译 nginx： 12345678910111213141516cd /root/fastdfstar -zxvf nginx-1.10.1.tar.gzcd nginx-1.10.1./configure \--prefix=/usr/local/nginx \--pid-path=/var/local/nginx/nginx.pid \--lock-path=/var/lock/nginx/nginx.lock \--error-log-path=/var/log/nginx/error.log \--http-log-path=/var/log/nginx/access.log \--with-http_gzip_static_module \--http-client-body-temp-path=/var/temp/nginx/client \--http-proxy-temp-path=/var/temp/nginx/proxy \--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \--http-scgi-temp-path=/var/temp/nginx/scgi \--add-module=/root/fastdfs/fastdfs-nginx-module/src 安装 nginx： 12makemake install 修改 /usr/local/nginx/conf/nginx.conf 参数： 1234user root; location /group1/M00 &#123; ngx_fastdfs_module; &#125; 启动 nginx： 1/usr/local/nginx/sbin/nginx 浏览器访问测试： 1http://192.168.115.131/group1/M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960_big.jpg]]></content>
+    <title><![CDATA[xtrabackup 安装]]></title>
+    <url>%2Fxtrabackup-manual%2F</url>
+    <content type="text"><![CDATA[记录 xtrabackup 安装命令。 操作系统版本：CentOS 6.5_64 MySQL数据库版本：5.7.12-log xtrabackup版本：2.4 注意：xtrabackup 版本与 MySQL 版本有对应关系： MySQL5.5 对应 xtrabackup 2.3、MySQL 5.7对应 xtrabackup 2.4 安装 xtrabackup12345yum install perl-DBI perl-DBD-MySQLrpm -ivh libev-4.15-1.el6.rf.x86_64.rpmyum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpmyum list | grep percona-xtrabackupyum install percona-xtrabackup-24]]></content>
       <categories>
-        <category>linux</category>
-        <category>file system</category>
+        <category>database</category>
+        <category>mysql</category>
       </categories>
       <tags>
-        <tag>fastdfs</tag>
+        <tag>xtrabackup</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用 Certbot 工具申请 Let's Encrypt 证书]]></title>
+    <url>%2Fletsencrypt-manual%2F</url>
+    <content type="text"><![CDATA[使用 Certbot 工具申请 Let’s Encrypt 免费证书。 操作系统版本：CentOS 6.7_64 Apache 版本：2.2.15 Certbot 安装12wget https://dl.eff.org/certbot-autochmod a+x certbot-auto Certbot使用更换下载 IP 访问站长工具，查询域名：pypi.python.org，找到最短响应的ip地址，写入hosts文件，例如： 1151.101.24.223 pypi.python.org 更换 pip 源为豆瓣的 pip 123456mkdir /root/.pipcat &gt; /root/.pip/pip.conf &lt;&lt; EOF[global]trusted-host = pypi.douban.comindex-url = http://pypi.douban.com/simpleEOF 使用命令行申请证书 1./certbot-auto --apache -d iamtim.wang -d www.iamtim.wang certonly 申请成功后，证书存放在 /etc/letsencrypt/live 下的对应域名目录中： 12345678ls -ltotal 0lrwxrwxrwx 1 root root 35 Dec 5 13:31 cert.pem -&gt; ../../archive/iamtim.wang/cert1.pemlrwxrwxrwx 1 root root 36 Dec 5 13:31 chain.pem -&gt; ../../archive/iamtim.wang/chain1.pemlrwxrwxrwx 1 root root 40 Dec 5 13:31 fullchain.pem -&gt; ../../archive/iamtim.wang/fullchain1.pemlrwxrwxrwx 1 root root 38 Dec 5 13:31 privkey.pem -&gt; ../../archive/iamtim.wang/privkey1.pempwd/etc/letsencrypt/live/iamtim.wang 证书续期命令添加到计划任务 10 1 * * * /root/certbot-auto renew --quiet Apache 配置配置 Apache 的 ssl.conf 文件 可以参考 Mozilla SSL Configuration Generator 给出的配置。 123456789101112131415&lt;VirtualHost *:443&gt; ... SSLEngine on ServerAlias iamtim.wang ServerAlias www.iamtim.wang SSLCertificateChainFile /etc/letsencrypt/live/iamtim.wang/chain.pem SSLCertificateFile /etc/letsencrypt/live/iamtim.wang/cert.pem SSLCertificateKeyFile /etc/letsencrypt/live/iamtim.wang/privkey.pem # HSTS (mod_headers is required) (15768000 seconds = 6 months) Header always set Strict-Transport-Security "max-age=15768000" SSLProtocol all -SSLv2 -SSLv3 SSLCipherSuite ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS SSLHonorCipherOrder on ...&lt;/VirtualHost&gt; 重启 Apache 后，访问如下页面测试证书安全性 1https://www.ssllabs.com/ssltest/analyze.html?d=iamtim.wang]]></content>
+      <categories>
+        <category>https</category>
+      </categories>
+      <tags>
+        <tag>https</tag>
+        <tag>letsencrypt</tag>
+        <tag>certbot</tag>
       </tags>
   </entry>
   <entry>
@@ -201,15 +238,38 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[xtrabackup 安装]]></title>
-    <url>%2Fxtrabackup-manual%2F</url>
-    <content type="text"><![CDATA[记录 xtrabackup 安装命令。 操作系统版本：CentOS 6.5_64 MySQL数据库版本：5.7.12-log xtrabackup版本：2.4 注意：xtrabackup 版本与 MySQL 版本有对应关系： MySQL5.5 对应 xtrabackup 2.3、MySQL 5.7对应 xtrabackup 2.4 安装 xtrabackup12345yum install perl-DBI perl-DBD-MySQLrpm -ivh libev-4.15-1.el6.rf.x86_64.rpmyum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpmyum list | grep percona-xtrabackupyum install percona-xtrabackup-24]]></content>
+    <title><![CDATA[安装配置 GlusterFS 文件系统]]></title>
+    <url>%2Fglusterfs-install-and-settings-for-test-environment%2F</url>
+    <content type="text"><![CDATA[在两台虚拟机上安装配置 GlusterFS 文件系统，用于学习与测试。 服务器信息：test01(192.168.115.131)、test02(192.168.155.132) OS版本：CentOS release 6.7 (Final) GlusterFS 版本：3.8.4 环境准备（both）修改 /etc/hosts 文件 12192.168.115.131 test01192.168.115.132 test02 安装依赖包 1yum install xfsprogs 格式化挂在分区 1234mkfs.xfs -i size=512 /dev/sdb1mkdir -p /data/brick1echo '/dev/sdb1 /data/brick1 xfs defaults 1 2' &gt;&gt; /etc/fstabmount -a &amp;&amp; mount 安装 glusterfs（both）安装软件包 123yum install -y centos-release-glusteryum install glusterfs-serverservice glusterd start 查看版本信息 1234567gluster --versionglusterfs 3.8.4 built on Sep 9 2016 17:31:23Repository revision: git://git.gluster.com/glusterfs.gitCopyright (c) 2006-2011 Gluster Inc. &lt;http://www.gluster.com&gt;GlusterFS comes with ABSOLUTELY NO WARRANTY.You may redistribute copies of GlusterFS under the terms of the GNU General Public License.You have new mail in /var/spool/mail/root 配置 Replicated Glusterfs Volume配置可信任的池 123gluster peer probe test02 ----test01执行gluster peer probe test01 ----test02执行` 创建 GlusterFS volume 123mkdir /data/brick1/gv0gluster volume create gv0 replica 2 test01:/data/brick1/gv0 test02:/data/brick1/gv0gluster volume start gv0 查看信息 123456789101112131415gluster volume infoVolume Name: gv0Type: ReplicateVolume ID: a0e5d4d6-15f4-40d1-8cdc-b2c2a4f074eaStatus: StartedSnapshot Count: 0Number of Bricks: 1 x 2 = 2Transport-type: tcpBricks:Brick1: test01:/data/brick1/gv0Brick2: test02:/data/brick1/gv0Options Reconfigured:transport.address-family: inetperformance.readdir-ahead: onnfs.disable: on 测试客户端安装卷，测试文件写入，为了简便操作，直接在server端进行测试： 12mount -t glusterfs test01:/gv0 /mntfor i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done 如果安装 client 端进行测试，安装所需依赖包命令如下： 1yum -y install glusterfs glusterfs-fuse GlusterFS 架构Distributed Glusterfs Volume： 1gluster volume create test-volume server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 Replicated Glusterfs Volume： 1gluster volume create test-volume replica 2 transport tcp server1:/exp1 server2:/exp2 Distributed Replicated Glusterfs Volume： 1gluster volume create test-volume replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 Striped Glusterfs Volume： 1gluster volume create test-volume stripe 2 transport tcp server1:/exp1 server2:/exp2 Distributed Striped Glusterfs Volume： 1gluster volume create test-volume stripe 4 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8]]></content>
       <categories>
-        <category>database</category>
-        <category>mysql</category>
+        <category>linux</category>
+        <category>file system</category>
       </categories>
       <tags>
-        <tag>xtrabackup</tag>
+        <tag>glusterfs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[zabbix 3.0.7 安装]]></title>
+    <url>%2Fzabbix-install%2F</url>
+    <content type="text"><![CDATA[在测试环境安装配置 zabbix，用来进行学习。 zabbix 需要运行在 LAMP 上，具体配置要求可以查看 zabbix 3.0 documentation CentOS 版本：6.7 x86_64 MySQL 版本为：5.7.12 PHP 版本为：5.5.38 Apache 版本为：2.2.15 安装 MySQL 5.7使用二进制安装包，安装步骤请参考：二进制安装 MySQL 5.7.18 安装 PHP 5.5安装 YUM 源 1rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm 安装 PHP 1yum install httpd php55w php55w-mysql php55w-gd php55w-imap php55w-ldap php55w-odbc php55w-pear php55w-xml php55w-xmlrpc php55w-mcrypt php55w-mbstring php55w-devel php55w-pecl-memcached php55w-common php55w-pdo php55w-cli php55w-pecl-memcache php55w-bcmath php55w-fpm 修改 /etc/php.ini 文件 1mysqli.default_socket = /mysql/data/mysql.sock 安装 zabbix 3.0.7更新 curl 1234567cd /etc/yum.repos.drename .repo .bak *.repowget http://mirrors.163.com/.help/CentOS6-Base-163.reposed -i 's@^exclude@#exclude@' /etc/yum.confyum clean allyum makecacheyum install curl libcurl libcurl-devel 安装 zabbix 源 12rpm -ivh http://repo.zabbix.com/zabbix/3.0/rhel/6/x86_64/zabbix-release-3.0-1.el6.noarch.rpmyum install zabbix-server-mysql zabbix-web-mysql 创建 zabbix 数据库 123create database zabbix character set utf8 collate utf8_bin;grant all privileges on zabbix.* to zabbix@localhost identified by 'xxxx';zcat /usr/share/doc/zabbix-server-mysql-3.0.7/create.sql.gz | mysql -uzabbix -p 配置 zabbix 数据库连接 12345cat /etc/zabbix/zabbix_server.confDBHost=localhostDBName=zabbixDBUser=zabbixDBPassword=xxxx 添加 zabbix 的 apache 配置 123cp /usr/share/doc/zabbix-web-3.0.7/httpd22-example.conf /etc/httpd/conf.d/zabbix.confsed -i "s@# php_value date.timezone Europe/Riga@php_value date.timezone Asia/Shanghai@" /etc/httpd/conf.d/zabbix.confservice httpd restart 访问 http://ip/zabbix 进行初始化配置。]]></content>
+      <categories>
+        <category>monitor</category>
+      </categories>
+      <tags>
+        <tag>zabbix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安装配置 FastDFS 文件系统]]></title>
+    <url>%2Ffastdfs-install-and-settings-for-test-environment%2F</url>
+    <content type="text"><![CDATA[在两台虚拟机上安装 FastDFS 文件系统，用来学习与测试。 服务器信息：test01(192.168.115.131)、test02(192.168.155.132) OS 版本：CentOS release 6.7 (Final) FastDFS 版本：5.08 上传安装介质（both）创建相关目录12mkdir /root/fastdfsmkdir -p /home/fastdfs_data/client /home/fastdfs_data/module /home/fastdfs_data/storage /home/fastdfs_data/tracker 上传安装文件到 /root/fastdfs 目录1234fastdfs-nginx-module_v1.16.tar.gzFastDFS_v5.08.tar.gzlibfastcommon-master.zipnginx-1.10.1.tar.gz 编译安装 libfastcommon（both）12345678910yum install -y gcc perl libeventcd /root/fastdfsunzip libfastcommon-master.zipcd libfastcommon-master./make.sh./make.sh installln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.soln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.soln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.soln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so 编译安装 FastDFS（both）12345cd /root/fastdfstar -zxvf FastDFS_v5.08.tar.gzcd FastDFS./make.sh./make.sh install 配置 FastDFS（both）配置 tracker拷贝配置文件： 1cp /etc/fdfs/tracker.conf.sample /etc/fdfs/tracker.conf 修改 /etc/fdfs/tracker.conf 参数： 1base_path=/home/fastdfs_data/tracker 启动 tracker 进程： 1/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart 配置 storage拷贝配置文件： 1cp /etc/fdfs/storage.conf.sample /etc/fdfs/storage.conf 修改 /etc/fdfs/storage.conf 参数： 1234base_path=/home/fastdfs_data/storagestore_path0=/home/fastdfs_datatracker_server=192.168.115.131:22122tracker_server=192.168.115.132:22122 启动 storage： 1/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart 配置 client拷贝配置文件： 1cp /etc/fdfs/client.conf.sample /etc/fdfs/client.conf 修改 /etc/fdfs/client.conf 参数： 123base_path=/home/fastdfs_data/clienttracker_server=192.168.115.131:22122tracker_server=192.168.115.132:22122 测试： 1fdfs_test /etc/fdfs/client.conf upload Lighthouse.jpg 以下输出表示配置正确： 123456789101112131415161718192021222324252627282930 This is FastDFS client test program v5.08Copyright (C) 2008, Happy Fish / YuQingFastDFS may be copied only under the terms of the GNU GeneralPublic License V3, which may be found in the FastDFS source kit.Please visit the FastDFS Home Page http://www.csource.org/for more detail.[2016-09-14 15:05:58] DEBUG - base_path=/home/fastdfs_data/client, connect_timeout=30, network_timeout=60, tracker_server_count=2, anti_steal_token=0, anti_steal_secret_key length=0, use_connection_pool=0, g_connection_pool_max_idle_time=3600s, use_storage_id=0, storage server id count: 0tracker_query_storage_store_list_without_group: server 1. group_name=, ip_addr=192.168.115.131, port=23000 server 2. group_name=, ip_addr=192.168.115.132, port=23000group_name=group1, ip_addr=192.168.115.132, port=23000storage_upload_by_filenamegroup_name=group1, remote_filename=M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960.jpgsource ip address: 192.168.115.132file timestamp=2016-09-14 15:05:58file size=561276file crc32=2713938340example file url: http://192.168.115.131/group1/M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960.jpgstorage_upload_slave_by_filenamegroup_name=group1, remote_filename=M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960_big.jpgsource ip address: 192.168.115.132file timestamp=2016-09-14 15:05:58file size=561276file crc32=2713938340example file url: http://192.168.115.131/group1/M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960_big.jpg 编译安装配置 nginx（test01）配置 fastdfs-nginx-module解压修改配置文件： 12cd /root/fastdfstar -zxvf fastdfs-nginx-module_v1.16.tar.gz 修改 fastdfs-nginx-module/src/config 参数： 1CORE_INCS="$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/" 拷贝配置文件： 123cp /root/fastdfs/FastDFS/conf/http.conf /etc/fdfs/cp /root/fastdfs/FastDFS/conf/mime.types /etc/fdfs/cp /root/fastdfs/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs 修改 /etc/fdfs/mod_fastdfs.conf 参数： 12345base_path=/home/fastdfs_data/moduletracker_server=192.168.115.131:22122tracker_server=192.168.115.132:22122url_have_group_name = truestore_path0=/home/fastdfs_data 编译安装 nginxyum 安装依赖包： 1yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel 创建日志目录： 1mkdir -p /usr/local/nginx /var/log/nginx /var/temp/nginx /var/lock/nginx 编译 nginx： 12345678910111213141516cd /root/fastdfstar -zxvf nginx-1.10.1.tar.gzcd nginx-1.10.1./configure \--prefix=/usr/local/nginx \--pid-path=/var/local/nginx/nginx.pid \--lock-path=/var/lock/nginx/nginx.lock \--error-log-path=/var/log/nginx/error.log \--http-log-path=/var/log/nginx/access.log \--with-http_gzip_static_module \--http-client-body-temp-path=/var/temp/nginx/client \--http-proxy-temp-path=/var/temp/nginx/proxy \--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \--http-scgi-temp-path=/var/temp/nginx/scgi \--add-module=/root/fastdfs/fastdfs-nginx-module/src 安装 nginx： 12makemake install 修改 /usr/local/nginx/conf/nginx.conf 参数： 1234user root; location /group1/M00 &#123; ngx_fastdfs_module; &#125; 启动 nginx： 1/usr/local/nginx/sbin/nginx 浏览器访问测试： 1http://192.168.115.131/group1/M00/00/00/wKhzhFfY9taAOvjKAAiQfKHDaaQ960_big.jpg]]></content>
+      <categories>
+        <category>linux</category>
+        <category>file system</category>
+      </categories>
+      <tags>
+        <tag>fastdfs</tag>
       </tags>
   </entry>
   <entry>
@@ -236,42 +296,6 @@
         <tag>https</tag>
         <tag>letsencrypt</tag>
         <tag>acme.sh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[zabbix 3.0.7 安装]]></title>
-    <url>%2Fzabbix-install%2F</url>
-    <content type="text"><![CDATA[在测试环境安装配置 zabbix，用来进行学习。 zabbix 需要运行在 LAMP 上，具体配置要求可以查看 zabbix 3.0 documentation CentOS 版本：6.7 x86_64 MySQL 版本为：5.7.12 PHP 版本为：5.5.38 Apache 版本为：2.2.15 安装 MySQL 5.7使用二进制安装包，安装步骤请参考：二进制安装 MySQL 5.7.18 安装 PHP 5.5安装 YUM 源 1rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm 安装 PHP 1yum install httpd php55w php55w-mysql php55w-gd php55w-imap php55w-ldap php55w-odbc php55w-pear php55w-xml php55w-xmlrpc php55w-mcrypt php55w-mbstring php55w-devel php55w-pecl-memcached php55w-common php55w-pdo php55w-cli php55w-pecl-memcache php55w-bcmath php55w-fpm 修改 /etc/php.ini 文件 1mysqli.default_socket = /mysql/data/mysql.sock 安装 zabbix 3.0.7更新 curl 1234567cd /etc/yum.repos.drename .repo .bak *.repowget http://mirrors.163.com/.help/CentOS6-Base-163.reposed -i 's@^exclude@#exclude@' /etc/yum.confyum clean allyum makecacheyum install curl libcurl libcurl-devel 安装 zabbix 源 12rpm -ivh http://repo.zabbix.com/zabbix/3.0/rhel/6/x86_64/zabbix-release-3.0-1.el6.noarch.rpmyum install zabbix-server-mysql zabbix-web-mysql 创建 zabbix 数据库 123create database zabbix character set utf8 collate utf8_bin;grant all privileges on zabbix.* to zabbix@localhost identified by 'xxxx';zcat /usr/share/doc/zabbix-server-mysql-3.0.7/create.sql.gz | mysql -uzabbix -p 配置 zabbix 数据库连接 12345cat /etc/zabbix/zabbix_server.confDBHost=localhostDBName=zabbixDBUser=zabbixDBPassword=xxxx 添加 zabbix 的 apache 配置 123cp /usr/share/doc/zabbix-web-3.0.7/httpd22-example.conf /etc/httpd/conf.d/zabbix.confsed -i "s@# php_value date.timezone Europe/Riga@php_value date.timezone Asia/Shanghai@" /etc/httpd/conf.d/zabbix.confservice httpd restart 访问 http://ip/zabbix 进行初始化配置。]]></content>
-      <categories>
-        <category>monitor</category>
-      </categories>
-      <tags>
-        <tag>zabbix</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[安装配置 GlusterFS 文件系统]]></title>
-    <url>%2Fglusterfs-install-and-settings-for-test-environment%2F</url>
-    <content type="text"><![CDATA[在两台虚拟机上安装配置 GlusterFS 文件系统，用于学习与测试。 服务器信息：test01(192.168.115.131)、test02(192.168.155.132) OS版本：CentOS release 6.7 (Final) GlusterFS 版本：3.8.4 环境准备（both）修改 /etc/hosts 文件 12192.168.115.131 test01192.168.115.132 test02 安装依赖包 1yum install xfsprogs 格式化挂在分区 1234mkfs.xfs -i size=512 /dev/sdb1mkdir -p /data/brick1echo '/dev/sdb1 /data/brick1 xfs defaults 1 2' &gt;&gt; /etc/fstabmount -a &amp;&amp; mount 安装 glusterfs（both）安装软件包 123yum install -y centos-release-glusteryum install glusterfs-serverservice glusterd start 查看版本信息 1234567gluster --versionglusterfs 3.8.4 built on Sep 9 2016 17:31:23Repository revision: git://git.gluster.com/glusterfs.gitCopyright (c) 2006-2011 Gluster Inc. &lt;http://www.gluster.com&gt;GlusterFS comes with ABSOLUTELY NO WARRANTY.You may redistribute copies of GlusterFS under the terms of the GNU General Public License.You have new mail in /var/spool/mail/root 配置 Replicated Glusterfs Volume配置可信任的池 123gluster peer probe test02 ----test01执行gluster peer probe test01 ----test02执行` 创建 GlusterFS volume 123mkdir /data/brick1/gv0gluster volume create gv0 replica 2 test01:/data/brick1/gv0 test02:/data/brick1/gv0gluster volume start gv0 查看信息 123456789101112131415gluster volume infoVolume Name: gv0Type: ReplicateVolume ID: a0e5d4d6-15f4-40d1-8cdc-b2c2a4f074eaStatus: StartedSnapshot Count: 0Number of Bricks: 1 x 2 = 2Transport-type: tcpBricks:Brick1: test01:/data/brick1/gv0Brick2: test02:/data/brick1/gv0Options Reconfigured:transport.address-family: inetperformance.readdir-ahead: onnfs.disable: on 测试客户端安装卷，测试文件写入，为了简便操作，直接在server端进行测试： 12mount -t glusterfs test01:/gv0 /mntfor i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done 如果安装 client 端进行测试，安装所需依赖包命令如下： 1yum -y install glusterfs glusterfs-fuse GlusterFS 架构Distributed Glusterfs Volume： 1gluster volume create test-volume server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 Replicated Glusterfs Volume： 1gluster volume create test-volume replica 2 transport tcp server1:/exp1 server2:/exp2 Distributed Replicated Glusterfs Volume： 1gluster volume create test-volume replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 Striped Glusterfs Volume： 1gluster volume create test-volume stripe 2 transport tcp server1:/exp1 server2:/exp2 Distributed Striped Glusterfs Volume： 1gluster volume create test-volume stripe 4 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8]]></content>
-      <categories>
-        <category>linux</category>
-        <category>file system</category>
-      </categories>
-      <tags>
-        <tag>glusterfs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[使用 Certbot 工具申请 Let's Encrypt 证书]]></title>
-    <url>%2Fletsencrypt-manual%2F</url>
-    <content type="text"><![CDATA[使用 Certbot 工具申请 Let’s Encrypt 免费证书。 操作系统版本：CentOS 6.7_64 Apache 版本：2.2.15 Certbot 安装12wget https://dl.eff.org/certbot-autochmod a+x certbot-auto Certbot使用更换下载 IP 访问站长工具，查询域名：pypi.python.org，找到最短响应的ip地址，写入hosts文件，例如： 1151.101.24.223 pypi.python.org 更换 pip 源为豆瓣的 pip 123456mkdir /root/.pipcat &gt; /root/.pip/pip.conf &lt;&lt; EOF[global]trusted-host = pypi.douban.comindex-url = http://pypi.douban.com/simpleEOF 使用命令行申请证书 1./certbot-auto --apache -d iamtim.wang -d www.iamtim.wang certonly 申请成功后，证书存放在 /etc/letsencrypt/live 下的对应域名目录中： 12345678ls -ltotal 0lrwxrwxrwx 1 root root 35 Dec 5 13:31 cert.pem -&gt; ../../archive/iamtim.wang/cert1.pemlrwxrwxrwx 1 root root 36 Dec 5 13:31 chain.pem -&gt; ../../archive/iamtim.wang/chain1.pemlrwxrwxrwx 1 root root 40 Dec 5 13:31 fullchain.pem -&gt; ../../archive/iamtim.wang/fullchain1.pemlrwxrwxrwx 1 root root 38 Dec 5 13:31 privkey.pem -&gt; ../../archive/iamtim.wang/privkey1.pempwd/etc/letsencrypt/live/iamtim.wang 证书续期命令添加到计划任务 10 1 * * * /root/certbot-auto renew --quiet Apache 配置配置 Apache 的 ssl.conf 文件 可以参考 Mozilla SSL Configuration Generator 给出的配置。 123456789101112131415&lt;VirtualHost *:443&gt; ... SSLEngine on ServerAlias iamtim.wang ServerAlias www.iamtim.wang SSLCertificateChainFile /etc/letsencrypt/live/iamtim.wang/chain.pem SSLCertificateFile /etc/letsencrypt/live/iamtim.wang/cert.pem SSLCertificateKeyFile /etc/letsencrypt/live/iamtim.wang/privkey.pem # HSTS (mod_headers is required) (15768000 seconds = 6 months) Header always set Strict-Transport-Security "max-age=15768000" SSLProtocol all -SSLv2 -SSLv3 SSLCipherSuite ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS SSLHonorCipherOrder on ...&lt;/VirtualHost&gt; 重启 Apache 后，访问如下页面测试证书安全性 1https://www.ssllabs.com/ssltest/analyze.html?d=iamtim.wang]]></content>
-      <categories>
-        <category>https</category>
-      </categories>
-      <tags>
-        <tag>https</tag>
-        <tag>letsencrypt</tag>
-        <tag>certbot</tag>
       </tags>
   </entry>
 </search>

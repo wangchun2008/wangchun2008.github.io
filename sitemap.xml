@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iamtim.wang/mysql-optimization/</loc>
+    
+    <lastmod>2018-10-10T06:47:52.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtim.wang/mysql-prompt/</loc>
+    
+    <lastmod>2018-10-10T06:31:29.555Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtim.wang/resume/index.html</loc>
+    
+    <lastmod>2018-09-16T12:05:12.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iamtim.wang/install-ss-client/</loc>
     
-    <lastmod>2018-09-13T05:43:52.140Z</lastmod>
+    <lastmod>2018-09-13T05:44:04.462Z</lastmod>
     
   </url>
   
@@ -12,13 +33,6 @@
     <loc>https://iamtim.wang/pmm-install/</loc>
     
     <lastmod>2018-09-12T04:44:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iamtim.wang/resume/index.html</loc>
-    
-    <lastmod>2018-09-07T03:38:03.688Z</lastmod>
     
   </url>
   
