@@ -4,6 +4,29 @@
 
     
   <url>
+    <loc>https://iamtim.wang/mysql-procedure-commit/</loc>
+    <lastmod>2018-10-10T09:52:13.346Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 存储过程事务控制</title>
+        <pubTime>2018-10-09T16:00:01.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="database" url="https://iamtim.wang/categories/database/"/>
+          
+             
+              <breadCrumb title="mysql" url="https://iamtim.wang/categories/database/mysql/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://iamtim.wang/mysql-optimization/</loc>
     <lastmod>2018-10-10T06:47:52.906Z</lastmod>
     <data>
@@ -185,9 +208,9 @@
         <title>使用 zabbix 监控 DELL 服务器</title>
         <pubTime>2017-05-14T16:00:01.000Z</pubTime>
         
-        <tag>zabbix</tag>
-         
         <tag>dell</tag>
+         
+        <tag>zabbix</tag>
          
         <tag>omsa</tag>
          

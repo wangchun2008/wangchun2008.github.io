@@ -108,23 +108,27 @@
 
 
 
-  <meta name="description" content="人丑就得多读书">
-<meta property="og:type" content="website">
-<meta property="og:title" content="懒癌晚期的中年大叔">
-<meta property="og:url" content="https://iamtim.wang/archives/page/2/index.html">
+  <meta name="description" content="在使用存储过程批量插入数据时，没有进行事务控制，造成效率低下，特此记录。  MySQL 版本：5.7.12">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 存储过程事务控制">
+<meta property="og:url" content="https://iamtim.wang/mysql-procedure-commit/index.html">
 <meta property="og:site_name" content="懒癌晚期的中年大叔">
-<meta property="og:description" content="人丑就得多读书">
+<meta property="og:description" content="在使用存储过程批量插入数据时，没有进行事务控制，造成效率低下，特此记录。  MySQL 版本：5.7.12">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/mysql-procedure-commit.png">
+<meta property="og:updated_time" content="2018-10-10T09:52:13.346Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒癌晚期的中年大叔">
-<meta name="twitter:description" content="人丑就得多读书">
+<meta name="twitter:title" content="MySQL 存储过程事务控制">
+<meta name="twitter:description" content="在使用存储过程批量插入数据时，没有进行事务控制，造成效率低下，特此记录。  MySQL 版本：5.7.12">
+<meta name="twitter:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/mysql-procedure-commit.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://iamtim.wang/archives/page/2/"/>
+  <link rel="canonical" href="https://iamtim.wang/mysql-procedure-commit/"/>
 
 
 
@@ -134,7 +138,7 @@
   };
 </script>
 
-  <title>归档 | 懒癌晚期的中年大叔</title>
+  <title>MySQL 存储过程事务控制 | 懒癌晚期的中年大叔</title>
   
 
 
@@ -181,7 +185,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,7 +230,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
@@ -322,446 +326,288 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iamtim.wang/mysql-procedure-commit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tim Wang">
+      <meta itemprop="description" content="人丑就得多读书">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="懒癌晚期的中年大叔">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h2 class="post-title" itemprop="name headline">MySQL 存储过程事务控制
+              
+            
+          </h2>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-10 00:00:01 / 修改时间：17:52:13" itemprop="dateCreated datePublished" datetime="2018-10-10T00:00:01+08:00">2018-10-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 26 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/database/" itemprop="url" rel="index"><span itemprop="name">database</span></a></span>
 
-      
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/database/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
 
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/mysql-procedure-commit/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="mysql-procedure-commit/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/resource-summary/" itemprop="url">
-              
-                <span itemprop="name">资源汇总</span>
-              
-            </a>
-        
-      </h3>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-11T00:00:01+08:00"
-              content="2017-04-11" >
-          04-11
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/zabbix-zapache/" itemprop="url">
-              
-                <span itemprop="name">使用 zapache 模板监控 Apache</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-06T00:00:01+08:00"
-              content="2017-04-06" >
-          04-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/zabbix-fpmmm/" itemprop="url">
-              
-                <span itemprop="name">使用 fpmmm 模板监控 MySQL</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-01T00:00:01+08:00"
-              content="2017-04-01" >
-          04-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/jemalloc-install/" itemprop="url">
-              
-                <span itemprop="name">MySQL 5.7 使用 jemalloc 管理内存</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-28T00:00:01+08:00"
-              content="2017-03-28" >
-          03-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p><img src="https://iamtimwang.oss-cn-beijing.aliyuncs.com/mysql-procedure-commit.png" alt="MySQL 命令行提示符配置"></p>
+<p>在使用存储过程批量插入数据时，没有进行事务控制，造成效率低下，特此记录。</p>
+<blockquote>
+<p>MySQL 版本：5.7.12</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="MySQL-存储过程事务控制"><a href="#MySQL-存储过程事务控制" class="headerlink" title="MySQL 存储过程事务控制"></a>MySQL 存储过程事务控制</h1><p>创建表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`users`</span> (</span><br><span class="line">   <span class="string">`id`</span> <span class="built_in">bigint</span>(<span class="number">21</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">   <span class="string">`first_name`</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">COLLATE</span> utf8_unicode_ci <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   <span class="string">`last_name`</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">COLLATE</span> utf8_unicode_ci <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   <span class="string">`cre_date`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line"> ) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 <span class="keyword">COLLATE</span>=utf8_unicode_ci;</span><br></pre></td></tr></table></figure>
+<p>创建存储过程：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> DEFINER=<span class="string">`root`</span>@<span class="string">`localhost`</span> <span class="keyword">PROCEDURE</span> <span class="string">`batch_insert_data`</span>(<span class="keyword">IN</span> <span class="keyword">num</span> <span class="built_in">INT</span>(<span class="number">10</span>))</span><br><span class="line">    <span class="keyword">DETERMINISTIC</span></span><br><span class="line">    MODIFIES <span class="keyword">SQL</span> <span class="keyword">DATA</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">DECLARE</span> i <span class="built_in">INT</span> <span class="keyword">UNSIGNED</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>;</span><br><span class="line">    WHILE i &lt;= num DO</span><br><span class="line">      <span class="keyword">SET</span> @first_name = <span class="string">''</span>;</span><br><span class="line">      <span class="keyword">SET</span> @last_name = <span class="string">''</span>;</span><br><span class="line">      <span class="keyword">SELECT</span> <span class="keyword">SUBSTRING</span>(<span class="keyword">MD5</span>(<span class="keyword">RAND</span>()),<span class="number">1</span>,<span class="number">10</span>) <span class="keyword">INTO</span> @first_name;</span><br><span class="line">      <span class="keyword">SELECT</span> <span class="keyword">SUBSTRING</span>(<span class="keyword">MD5</span>(<span class="keyword">RAND</span>()),<span class="number">1</span>,<span class="number">10</span>) <span class="keyword">INTO</span> @last_name;</span><br><span class="line">      <span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> <span class="keyword">VALUES</span> (<span class="literal">NULL</span>, @first_name, @last_name, <span class="keyword">NOW</span>());</span><br><span class="line">      <span class="keyword">SET</span> i = i+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">END</span> <span class="keyword">WHILE</span>;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line"></span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>插入 50 万行数据，事务自动提交：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost)[db]&gt; CALL `batch_insert_data`(500000);</span><br><span class="line">Query OK, 1 row affected (33.73 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>插入 50 万行数据，事务手动提交：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost)[db]&gt; BEGIN;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost)[db]&gt; CALL `batch_insert_data`(500000);</span><br><span class="line">Query OK, 1 row affected (19.51 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost)[db]&gt; COMMIT;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>也可以在存储过程中进行事务控制：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`batch_insert_data`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> DEFINER=<span class="string">`root`</span>@<span class="string">`localhost`</span> <span class="keyword">PROCEDURE</span> <span class="string">`batch_insert_data`</span>(<span class="keyword">IN</span> <span class="keyword">num</span> <span class="built_in">INT</span>(<span class="number">10</span>))</span><br><span class="line">    <span class="keyword">DETERMINISTIC</span></span><br><span class="line">    MODIFIES <span class="keyword">SQL</span> <span class="keyword">DATA</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">DECLARE</span> i <span class="built_in">INT</span> <span class="keyword">UNSIGNED</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;</span><br><span class="line">    WHILE i &lt;= num DO</span><br><span class="line">      <span class="keyword">SET</span> @first_name = <span class="string">''</span>;</span><br><span class="line">      <span class="keyword">SET</span> @last_name = <span class="string">''</span>;</span><br><span class="line">      <span class="keyword">SELECT</span> <span class="keyword">SUBSTRING</span>(<span class="keyword">MD5</span>(<span class="keyword">RAND</span>()),<span class="number">1</span>,<span class="number">10</span>) <span class="keyword">INTO</span> @first_name;</span><br><span class="line">      <span class="keyword">SELECT</span> <span class="keyword">SUBSTRING</span>(<span class="keyword">MD5</span>(<span class="keyword">RAND</span>()),<span class="number">1</span>,<span class="number">10</span>) <span class="keyword">INTO</span> @last_name;</span><br><span class="line">      <span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> <span class="keyword">VALUES</span> (<span class="literal">NULL</span>, @first_name, @last_name, <span class="keyword">NOW</span>());</span><br><span class="line">      <span class="keyword">SET</span> i = i+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">END</span> <span class="keyword">WHILE</span>;</span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line"></span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+<p>插入 50 万行数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost)[db]&gt; CALL `batch_insert_data`(500000);</span><br><span class="line">Query OK, 0 rows affected (19.32 sec)</span><br></pre></td></tr></table></figure>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/redis-install/" itemprop="url">
-              
-                <span itemprop="name">在 CentOS 7 上安装 Redis 3.2.8</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-24T00:00:01+08:00"
-              content="2017-03-24" >
-          03-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/gitlab-upgrade-test/" itemprop="url">
-              
-                <span itemprop="name">GitLab 版本升级测试</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-17T00:00:02+08:00"
-              content="2017-03-17" >
-          03-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/books/" itemprop="url">
-              
-                <span itemprop="name">我的图书目录</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-17T00:00:01+08:00"
-              content="2017-03-17" >
-          03-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/redmine-environment-with-docker/" itemprop="url">
-              
-                <span itemprop="name">使用 Docker 创建 redmine 环境</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-16T00:00:01+08:00"
-              content="2017-03-16" >
-          03-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/centos6-init/" itemprop="url">
-              
-                <span itemprop="name">CentOS6 系统初始化配置</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-15T00:00:01+08:00"
-              content="2017-03-15" >
-          03-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/letsencrypt-manual/" itemprop="url">
-              
-                <span itemprop="name">使用 Certbot 工具申请 Let's Encrypt 证书</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-15T00:00:01+08:00"
-              content="2017-03-15" >
-          03-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+       
+     <div>    
+      
+      <ul class="post-copyright">
+         <li class="post-copyright-link">
+          <strong>本文作者：</strong>
+          <a href="/" title="欢迎访问 Tim Wang 的个人博客">Tim Wang</a>
+        </li>
+
+        <li class="post-copyright-link">
+          <strong>本文标题：</strong>
+          <a href="https://iamtim.wang/mysql-procedure-commit/" title="MySQL 存储过程事务控制">MySQL 存储过程事务控制</a>
+        </li>
+
+        <li class="post-copyright-link">
+          <strong>本文链接：</strong>
+          <a href="https://iamtim.wang/mysql-procedure-commit/" title="MySQL 存储过程事务控制">https://iamtim.wang/mysql-procedure-commit/</a>
+        </li>
+
+        <li class="post-copyright-date">
+            <strong>发布时间：</strong>2018年10月10日 - 00时10分
+        </li>  
+
+        <li class="post-copyright-license">
+          <strong>版权声明： </strong>
+          本文由 Tim Wang 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank">保留署名-非商业性使用-禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
+        </li>
+      </ul>
+    
+  </div> 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/mysql-optimization/" rel="next" title="MySQL 服务器选型与优化">
+                <i class="fa fa-chevron-left"></i> MySQL 服务器选型与优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/mysql-prompt/" rel="prev" title="MySQL 命令行提示符配置">
+                MySQL 命令行提示符配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -782,8 +628,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -956,6 +811,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-存储过程事务控制"><span class="nav-number">1.</span> <span class="nav-text">MySQL 存储过程事务控制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -1103,6 +974,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
 
   
 
@@ -1117,6 +992,23 @@
     <script id="dsq-count-scr" src="https://iamtimwang.disqus.com/count.js" async></script>
   
 
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://iamtim.wang/mysql-procedure-commit/';
+        this.page.identifier = 'mysql-procedure-commit/';
+        this.page.title = 'MySQL 存储过程事务控制';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://iamtimwang.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
   
 
 
