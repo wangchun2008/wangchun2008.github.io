@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[创建本地软件仓库]]></title>
+    <url>%2Flocal-repos%2F</url>
+    <content type="text"><![CDATA[为了适应项目方没有网络环境的情况，创建本地仓库用于安装依赖包。 操作系统版本：CentOS 6.10_x64 Basic Server 创建本地软件仓库清空默认 YUM 源 123mkdir /etc/yum.repos.d/backupcd /etc/yum.repos.dmv *.repo ./backup 安装所需 YUM 源 1234wget http://mirrors.163.com/.help/CentOS6-Base-163.reporpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpmrpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpmrpm -Uvh http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm 创建 YUM 源缓存 12yum clean allyum makecache 仅下载依赖包（不安装） 12mkdir /root/reposyum -y install httpd mod_ssl openssl openssl-devels createrepo php56w php56w-cli php56w-common php56w-gd php56w-imap php56w-ldap php56w-odbc php56w-pdo php56w-pear php56w-xml php56w-xmlrpc php56w-soap php56w-mysql php56w-mbstring php56w-mcrypt deltarpm python-deltarpm gcc gcc-c++ make cmake autoconf libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel libaio readline-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5-devel libidn libidn-devel libxslt-devel libicu-devel libevent-devel libtool libtool-ltdl bison gd-devel vim-enhanced pcre-devel zip unzip ntpdate sysstat patch bc expect htop lsof lrzsz telnet libmcrypt libmcrypt-devel perl-DBI perl-DBD-MySQL percona-xtrabackup-24 haproxy nginx rsync keepalived --downloadonly --downloaddir=/root/repos 创建软件仓库 12yum -y install createrepocreaterepo --database /root/repos]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>centos6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7 安装 Shadowsocks 服务端]]></title>
+    <url>%2Finstall-ss-server%2F</url>
+    <content type="text"><![CDATA[趁着阿里云做活动，开了一个轻量化应用服务器实例，在新加坡区域，测试一下可不可以搭梯子翻墙。 CentOS 版本：7.3.1611 Shadowsocks 版本：2.8.2 安装配置 Shadowsocks 服务端卸载安骑士 Agent： 123wget http://update.aegis.aliyun.com/download/uninstall.shchmod +x uninstall.sh./uninstall.sh 卸载云监控 Java 版本插件： 123/usr/local/cloudmonitor/wrapper/bin/cloudmonitor.sh stop/usr/local/cloudmonitor/wrapper/bin/cloudmonitor.sh removerm -rf /usr/local/cloudmonitor 安装 Shadowsocks 服务端： 123yum install python-setuptools &amp;&amp; easy_install pippip install --upgrade pippip install shadowsocks 无配置文件启动 ssserver： 1ssserver -s ::0 -p 443 -k 设置密码 -m aes-256-cfb --user nobody --workers 2 -d start]]></content>
+      <categories>
+        <category>other</category>
+      </categories>
+      <tags>
+        <tag>shadowsocks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[MySQL 命令行提示符配置]]></title>
     <url>%2Fmysql-prompt%2F</url>
     <content type="text"><![CDATA[个性化配置 MySQL 命令行提示符不仅为了美观，而且必要的提示信息可以减小一些人为错误操作的几率。 MySQL 版本：5.7.12 MySQL 命令行提示符配置提示符配置项说明： Option Description \C The current connection identifier \c A counter that increments for each statement you issue \D The full current date \d The default database \h The server host \l The current delimiter \m Minutes of the current time \n A newline character \O The current month in three-letter format (Jan, Feb, …) \o The current month in numeric format \P am/pm \p The current TCP/IP port or socket file \R The current time, in 24-hour military time (0–23) \r The current time, standard 12-hour time (1–12) \S Semicolon \s Seconds of the current time \t A tab character \U Your full user_name@host_name account name \u Your user name \v The server version \w The current day of the week in three-letter format (Mon, Tue, …) \Y The current year, four digits \y The current year, two digits _ A space \ A space (a space follows the backslash) \’ Single quote \” Double quote \ A literal \ backslash character \x x, for any “x” not listed above 通过修改环境变量制定提示符： 12345mysql&gt;mysql&gt; prompt (\U)[\d]&gt;\_PROMPT set to '(\U)[\d]&gt;\_'(root@localhost)[mysql]&gt;(root@localhost)[mysql]&gt; 12345(root@localhost)[mysql]&gt;(root@localhost)[mysql]&gt; prompt (\U) \D [\d]&gt;\_PROMPT set to '(\U) \D [\d]&gt;\_'(root@localhost) Wed Oct 10 14:00:23 2018 [mysql]&gt;(root@localhost) Wed Oct 10 14:00:29 2018 [mysql]&gt; 12345(root@localhost) Wed Oct 10 14:00:30 2018 [mysql]&gt;(root@localhost) Wed Oct 10 14:00:30 2018 [mysql]&gt; promptReturning to default PROMPT of mysql&gt;mysql&gt;mysql&gt; 通过修改 MySQL 配置文件制定提示符： 12[mysql]prompt = '(\U)[\d]&gt;\_' 参考 https://dev.mysql.com/doc/refman/5.7/en/mysql-commands.html]]></content>

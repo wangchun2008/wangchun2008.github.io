@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iamtim.wang/install-ss-server/</loc>
+    
+    <lastmod>2018-12-05T02:29:49.978Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtim.wang/local-repos/</loc>
+    
+    <lastmod>2018-12-05T02:12:48.998Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iamtim.wang/mysql-procedure-commit/</loc>
     
     <lastmod>2018-10-10T09:52:13.346Z</lastmod>

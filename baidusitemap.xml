@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>https://iamtim.wang/install-ss-server/</loc>
+    <lastmod>2018-12-05T02:29:49.978Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS7 安装 Shadowsocks 服务端</title>
+        <pubTime>2018-12-04T16:00:01.000Z</pubTime>
+        
+        <tag>shadowsocks</tag>
+         
+         
+           
+             
+              <breadCrumb title="other" url="https://iamtim.wang/categories/other/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://iamtim.wang/local-repos/</loc>
+    <lastmod>2018-12-05T02:12:48.998Z</lastmod>
+    <data>
+        <display>
+        <title>创建本地软件仓库</title>
+        <pubTime>2018-12-04T16:00:01.000Z</pubTime>
+        
+        <tag>centos6</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="https://iamtim.wang/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://iamtim.wang/mysql-procedure-commit/</loc>
     <lastmod>2018-10-10T09:52:13.346Z</lastmod>
     <data>
