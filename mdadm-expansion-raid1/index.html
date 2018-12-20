@@ -108,27 +108,27 @@
 
 
 
-  <meta name="description" content="记录GitLab 安装、迁移和升级命令。  安装介质可以从 gitlab 官网 选择对应的操作系统版本进行下载 操作系统版本：CentOS 6.5_64 GitLab 版本：7.14.1">
-<meta name="keywords" content="gitlab,git">
+  <meta name="description" content="测试数据库无法访问，检查发现 MySQL 数据分区磁盘使用率达到 100%，MySQL 一直在进行 crash recovery 操作。服务器使用了 2 块 1TB 硬盘，配置成软 RAID1。  /dev/md0 为数据分区  410GB  100% 占用率/dev/md1 为备份分区  400GB  空">
+<meta name="keywords" content="raid1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitLab 安装、迁移和升级">
-<meta property="og:url" content="https://iamtim.wang/gitlab-install-migration-upgrade/index.html">
+<meta property="og:title" content="扩容软 RAID1">
+<meta property="og:url" content="https://iamtim.wang/mdadm-expansion-raid1/index.html">
 <meta property="og:site_name" content="懒癌晚期的中年大叔">
-<meta property="og:description" content="记录GitLab 安装、迁移和升级命令。  安装介质可以从 gitlab 官网 选择对应的操作系统版本进行下载 操作系统版本：CentOS 6.5_64 GitLab 版本：7.14.1">
+<meta property="og:description" content="测试数据库无法访问，检查发现 MySQL 数据分区磁盘使用率达到 100%，MySQL 一直在进行 crash recovery 操作。服务器使用了 2 块 1TB 硬盘，配置成软 RAID1。  /dev/md0 为数据分区  410GB  100% 占用率/dev/md1 为备份分区  400GB  空">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/gitlab-install-migration-upgrade.png">
-<meta property="og:updated_time" content="2018-06-11T06:15:38.582Z">
+<meta property="og:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/mdadm-expansion-raid1.png">
+<meta property="og:updated_time" content="2018-12-20T02:30:44.763Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GitLab 安装、迁移和升级">
-<meta name="twitter:description" content="记录GitLab 安装、迁移和升级命令。  安装介质可以从 gitlab 官网 选择对应的操作系统版本进行下载 操作系统版本：CentOS 6.5_64 GitLab 版本：7.14.1">
-<meta name="twitter:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/gitlab-install-migration-upgrade.png">
+<meta name="twitter:title" content="扩容软 RAID1">
+<meta name="twitter:description" content="测试数据库无法访问，检查发现 MySQL 数据分区磁盘使用率达到 100%，MySQL 一直在进行 crash recovery 操作。服务器使用了 2 块 1TB 硬盘，配置成软 RAID1。  /dev/md0 为数据分区  410GB  100% 占用率/dev/md1 为备份分区  400GB  空">
+<meta name="twitter:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/mdadm-expansion-raid1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://iamtim.wang/gitlab-install-migration-upgrade/"/>
+  <link rel="canonical" href="https://iamtim.wang/mdadm-expansion-raid1/"/>
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>GitLab 安装、迁移和升级 | 懒癌晚期的中年大叔</title>
+  <title>扩容软 RAID1 | 懒癌晚期的中年大叔</title>
   
 
 
@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamtim.wang/gitlab-install-migration-upgrade/">
+    <link itemprop="mainEntityOfPage" href="https://iamtim.wang/mdadm-expansion-raid1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tim Wang">
@@ -363,7 +363,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">GitLab 安装、迁移和升级
+          <h2 class="post-title" itemprop="name headline">扩容软 RAID1
               
             
           </h2>
@@ -388,24 +388,12 @@
                 
               
 
-              <time title="创建时间：2017-03-15 00:00:01" itemprop="dateCreated datePublished" datetime="2017-03-15T00:00:01+08:00">2017-03-15</time>
+              <time title="创建时间：2018-12-20 00:00:01 / 修改时间：10:30:44" itemprop="dateCreated datePublished" datetime="2018-12-20T00:00:01+08:00">2018-12-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-06-11 14:15:38" itemprop="dateModified" datetime="2018-06-11T14:15:38+08:00">2018-06-11</time>
               
             
           </span>
@@ -422,14 +410,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/revision-control/" itemprop="url" rel="index"><span itemprop="name">revision control</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/revision-control/gitlab/" itemprop="url" rel="index"><span itemprop="name">gitlab</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
 
                 
                 
@@ -444,10 +425,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/gitlab-install-migration-upgrade/#comments" itemprop="discussionUrl">
+                <a href="/mdadm-expansion-raid1/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="gitlab-install-migration-upgrade/" itemprop="commentCount"></span>
+                        data-disqus-identifier="mdadm-expansion-raid1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -483,23 +464,58 @@
       
 
       
-        <p><img src="https://iamtimwang.oss-cn-beijing.aliyuncs.com/gitlab-install-migration-upgrade.png" alt="GitLab 安装、迁移和升级"></p>
-<p>记录GitLab 安装、迁移和升级命令。</p>
+        <p><img src="https://iamtimwang.oss-cn-beijing.aliyuncs.com/mdadm-expansion-raid1.png" alt="扩容软 RAID1"></p>
+<p>测试数据库无法访问，检查发现 MySQL 数据分区磁盘使用率达到 100%，MySQL 一直在进行 crash recovery 操作。服务器使用了 2 块 1TB 硬盘，配置成软 RAID1。</p>
 <blockquote>
-<p>安装介质可以从 <a href="https://packages.gitlab.com/gitlab/gitlab-ce" target="_blank" rel="noopener">gitlab 官网</a> 选择对应的操作系统版本进行下载</p>
-<p>操作系统版本：CentOS 6.5_64</p>
-<p>GitLab 版本：7.14.1</p>
+<p>/dev/md0 为数据分区  410GB  100% 占用率<br>/dev/md1 为备份分区  400GB  空</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="GitLab-安装"><a href="#GitLab-安装" class="headerlink" title="GitLab 安装"></a>GitLab 安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install curl openssh-server postfix cronie</span><br><span class="line">service postfix start</span><br><span class="line">chkconfig postfix on</span><br><span class="line">chkconfig iptables off</span><br><span class="line">service iptables stop</span><br><span class="line">rpm -ivh gitlab-ce-7.14.1-ce.0.el6.x86_64.rpm</span><br></pre></td></tr></table></figure>
-<h1 id="GitLab-迁移"><a href="#GitLab-迁移" class="headerlink" title="GitLab 迁移"></a>GitLab 迁移</h1><blockquote>
-<p>注意：gitlab 版本要保持一致</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp 1454176910_gitlab_backup.tar /var/opt/gitlab/backups</span><br><span class="line">gitlab-ctl stop unicorn</span><br><span class="line">gitlab-ctl stop sidekiq</span><br><span class="line">gitlab-rake gitlab:backup:restore BACKUP=1454176910</span><br><span class="line">gitlab-ctl start</span><br></pre></td></tr></table></figure>
-<h1 id="GitLab-升级"><a href="#GitLab-升级" class="headerlink" title="GitLab 升级"></a>GitLab 升级</h1><blockquote>
-<p>注意：gitlab 服务器升级版本会自动备份</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh gitlab-ce-8.3.1-ce.1.el6.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<h1 id="扩容软-RAID1"><a href="#扩容软-RAID1" class="headerlink" title="扩容软 RAID1"></a>扩容软 RAID1</h1><p>因为备份分区小于现有的数据分区，所以不能把备份分区直接加入到数据分区中。</p>
+<p>方案 1：把数据分区的 RAID1 改为 RAID10。备份分区重新做成 RAID0 加入到数据分区中，同步完成后，再把数据分区的磁盘取出配置成 RAID0 加入到数据分区中。</p>
+<p>方案 2：保留 RAID1 结构，扩展磁盘分区容量。</p>
+<p>因为只有 2 块硬盘，所有改成 RAID10 磁盘性能反而会下降。所以选择第 2 个方案。</p>
+<h2 id="磁盘分区扩容"><a href="#磁盘分区扩容" class="headerlink" title="磁盘分区扩容"></a>磁盘分区扩容</h2><ul>
+<li>查看备份分区信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mdadm -D /dev/md0</span><br><span class="line">/dev/md0:</span><br><span class="line">......</span><br><span class="line">           Number   Major   Minor   RaidDevice State</span><br><span class="line">       0       8        1        0      active sync   /dev/sda1</span><br><span class="line">       1       8       17        1      active sync   /dev/sdb1</span><br><span class="line"></span><br><span class="line">mdadm -D /dev/md1</span><br><span class="line">/dev/md1:</span><br><span class="line">......</span><br><span class="line">    Number   Major   Minor   RaidDevice State</span><br><span class="line">       0       8        2        0      active sync   /dev/sda2</span><br><span class="line">       1       8       18        1      active sync   /dev/sdb2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除备份分区</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/md1</span><br><span class="line">mdadm -S /dev/md1</span><br><span class="line">mdadm --misc --zero-superblock /dev/sda2</span><br><span class="line">mdadm --misc --zero-superblock /dev/sdb2</span><br></pre></td></tr></table></figure>
+<p>修改 <code>/etc/mdadm.conf</code> 配置文件，注释 /dev/md1 相关配置。</p>
+<p>修改 <code>/etc/fstab</code> 配置文件，注释备份分区 mount 信息。（<strong>操作中忘记这一步，造成重启服务器无法进入系统。</strong>）</p>
+<ul>
+<li>扩展 sdb1 磁盘分区</li>
+</ul>
+<p>1.从数据分区中去除 sdb1 分区：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mdadm /dev/md0 --fail /dev/sdb1 --remove /dev/sdb1</span><br><span class="line">mdadm --misc --zero-superblock /dev/sdb1</span><br></pre></td></tr></table></figure>
+<p>2.重新划分 sdb 盘分区，把 /dev/sdb1 和 /dev/sdb2 分区合并为一个分区：（<strong>如果省略第 2 步，容易出现逻辑扇区和物理扇区无法对齐情况，有可能影响 IO 性能。</strong>）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sdb</span><br><span class="line"></span><br><span class="line">1. p,Enter</span><br><span class="line"><span class="comment"># 显示分区信息</span></span><br><span class="line">2. u,Enter</span><br><span class="line"><span class="comment"># 将显示输入单元更改为扇区</span></span><br><span class="line">3. d,1,Enter</span><br><span class="line"><span class="comment"># 删除第 1 个分区</span></span><br><span class="line">4. d,2,Enter</span><br><span class="line"><span class="comment"># 删除第 2 个分区</span></span><br><span class="line">5. n,p,1,Enter,Enter</span><br><span class="line"><span class="comment"># 创建第 1 个主分区</span></span><br><span class="line">6. p,Enter</span><br><span class="line"><span class="comment"># 显示分区信息</span></span><br><span class="line">7. w,Enter</span><br><span class="line"><span class="comment"># 写入分区表信息并退出</span></span><br></pre></td></tr></table></figure>
+<p>3.重启系统更新 /dev/sdb 分区表：</p>
+<p>因为没有修改 <code>/etc/fstab</code> 配置文件，在服务器重启中出现如下提示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GIVE root password <span class="keyword">for</span> maintenance</span><br><span class="line"></span><br><span class="line">(or <span class="built_in">type</span> control-D to <span class="built_in">continue</span>):</span><br></pre></td></tr></table></figure>
+<p>输入 root 用户密码后，系统是只读状态，需要重新 mount 根分区，再修改 <code>/etc/fstab</code> 配置文件，最后重启即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mount –o remount,rw /</span><br><span class="line">vi /etc/fstab</span><br></pre></td></tr></table></figure>
+<p>4.数据分区添加 /dev/sdb1 磁盘，等待数据同步完成。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mdadm --manage /dev/md0 --add /dev/sdb1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>扩展 sda1 磁盘分区</li>
+</ul>
+<p>1.从数据分区中去除 sda1 分区：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mdadm /dev/md0 --fail /dev/sda1 --remove /dev/sda1</span><br><span class="line">mdadm --misc --zero-superblock /dev/sda1</span><br></pre></td></tr></table></figure>
+<p>2.重新划分 sda 盘分区，把 /dev/sda1 和 /dev/sda2 分区合并为一个分区。</p>
+<p>3.重启系统更新 /dev/sda 分区表。</p>
+<p>4.数据分区添加 /dev/sda1 磁盘，等待数据同步完成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mdadm --manage /dev/md0 --add /dev/sda1</span><br></pre></td></tr></table></figure>
+<p>至此磁盘分区扩容完成。</p>
+<h2 id="文件系统扩容"><a href="#文件系统扩容" class="headerlink" title="文件系统扩容"></a>文件系统扩容</h2><p>虽然磁盘分区扩容完成，但是文件系统大小没有变化，需要再对文件系统进行扩容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mdadm --grow --size max /dev/md0</span><br><span class="line">e2fsck -f /dev/md0</span><br><span class="line">resize2fs /dev/md0</span><br></pre></td></tr></table></figure>
+<p>PS：查到 <code>mdadm --grow /dev/md0 -z max --assume-clean</code> 命令也可以扩容，但是未经测试。</p>
+<h2 id="恢复-MySQL-服务"><a href="#恢复-MySQL-服务" class="headerlink" title="恢复 MySQL 服务"></a>恢复 MySQL 服务</h2><p>启动 MySQL 服务:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+<p>日志信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">181219 12:04:57 mysqld_safe Starting mysqld daemon with databases from /data/mysql</span><br><span class="line">181219 12:04:57 [Note] Plugin <span class="string">'FEDERATED'</span> is disabled.</span><br><span class="line">181219 12:04:57 InnoDB: The InnoDB memory heap is disabled</span><br><span class="line">181219 12:04:57 InnoDB: Mutexes and rw_locks use GCC atomic builtins</span><br><span class="line">181219 12:04:57 InnoDB: Compressed tables use zlib 1.2.3</span><br><span class="line">181219 12:04:57 InnoDB: Initializing buffer pool, size = 4.0G</span><br><span class="line">181219 12:04:57 InnoDB: Completed initialization of buffer pool</span><br><span class="line">181219 12:04:57 InnoDB: highest supported file format is Barracuda.</span><br><span class="line">InnoDB: Log scan progressed past the checkpoint lsn 848305710317</span><br><span class="line">181219 12:04:57  InnoDB: Database was not shut down normally!</span><br><span class="line">InnoDB: Starting crash recovery.</span><br><span class="line">InnoDB: Reading tablespace information from the .ibd files...</span><br><span class="line">InnoDB: Restoring possible half-written data pages from the doublewrite</span><br><span class="line">InnoDB: buffer...</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848310952960</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848316195840</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848321438720</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848326681600</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848331924480</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848337167360</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848342410240</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848347653120</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848352896000</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848358138880</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848363381760</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848368624640</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848373867520</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848379110400</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848384353280</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848389596160</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848394839040</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848400081920</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848405324800</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848410567680</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848415810560</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848421053440</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848426296320</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848431539200</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848436782080</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848442024960</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848447267840</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848452510720</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848457753600</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848462996480</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848468239360</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848473482240</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848478725120</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848483968000</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848489210880</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848494453760</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848499696640</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848504939520</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848510182400</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848515425280</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848520668160</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848525911040</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848531153920</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848536396800</span><br><span class="line">InnoDB: Doing recovery: scanned up to <span class="built_in">log</span> sequence number 848540988197</span><br><span class="line">InnoDB: 1 transaction(s) <span class="built_in">which</span> must be rolled back or cleaned up</span><br><span class="line">InnoDB: <span class="keyword">in</span> total 1 row operations to undo</span><br><span class="line">InnoDB: Trx id counter is EC300</span><br><span class="line">181219 12:05:01  InnoDB: Starting an apply batch of <span class="built_in">log</span> records to the database...</span><br><span class="line">InnoDB: Progress <span class="keyword">in</span> percents: 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99</span><br><span class="line">InnoDB: Apply batch completed</span><br><span class="line">InnoDB: Starting <span class="keyword">in</span> background the rollback of uncommitted transactions</span><br><span class="line">181219 12:05:05  InnoDB: Rolling back trx with id EC1B4, 1 rows to undo</span><br><span class="line">181219 12:05:05  InnoDB: Waiting <span class="keyword">for</span> the background threads to start</span><br><span class="line"></span><br><span class="line">InnoDB: Rolling back of trx id EC1B4 completed</span><br><span class="line">181219 12:05:06  InnoDB: Rollback of non-prepared transactions completed</span><br><span class="line">181219 12:05:06 InnoDB: 5.5.40 started; <span class="built_in">log</span> sequence number 848540988197</span><br><span class="line">181219 12:05:06 [Note] Server hostname (<span class="built_in">bind</span>-address): <span class="string">'0.0.0.0'</span>; port: 3306</span><br><span class="line">181219 12:05:06 [Note]   - <span class="string">'0.0.0.0'</span> resolves to <span class="string">'0.0.0.0'</span>;</span><br><span class="line">181219 12:05:06 [Note] Server socket created on IP: <span class="string">'0.0.0.0'</span>.</span><br><span class="line">181219 12:05:06 [Note] Event Scheduler: Loaded 0 events</span><br><span class="line">181219 12:05:06 [Note] /usr/<span class="built_in">local</span>/mysql/bin/mysqld: ready <span class="keyword">for</span> connections.</span><br><span class="line">Version: <span class="string">'5.5.40'</span>  socket: <span class="string">'/data/mysql/mysql.sock'</span>  port: 3306  Source distribution</span><br></pre></td></tr></table></figure>
+<p>至此数据库服务恢复正常。</p>
 
       
     </div>
@@ -520,9 +536,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/gitlab/" rel="tag"># gitlab</a>
-          
-            <a href="/tags/git/" rel="tag"># git</a>
+            <a href="/tags/raid1/" rel="tag"># raid1</a>
           
         </div>
       
@@ -541,16 +555,16 @@
 
         <li class="post-copyright-link">
           <strong>本文标题：</strong>
-          <a href="https://iamtim.wang/gitlab-install-migration-upgrade/" title="GitLab 安装、迁移和升级">GitLab 安装、迁移和升级</a>
+          <a href="https://iamtim.wang/mdadm-expansion-raid1/" title="扩容软 RAID1">扩容软 RAID1</a>
         </li>
 
         <li class="post-copyright-link">
           <strong>本文链接：</strong>
-          <a href="https://iamtim.wang/gitlab-install-migration-upgrade/" title="GitLab 安装、迁移和升级">https://iamtim.wang/gitlab-install-migration-upgrade/</a>
+          <a href="https://iamtim.wang/mdadm-expansion-raid1/" title="扩容软 RAID1">https://iamtim.wang/mdadm-expansion-raid1/</a>
         </li>
 
         <li class="post-copyright-date">
-            <strong>发布时间：</strong>2017年3月15日 - 00时03分
+            <strong>发布时间：</strong>2018年12月20日 - 00时12分
         </li>  
 
         <li class="post-copyright-license">
@@ -564,8 +578,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/zabbix-install/" rel="next" title="zabbix 3.0.7 安装">
-                <i class="fa fa-chevron-left"></i> zabbix 3.0.7 安装
+              <a href="/local-repos/" rel="next" title="创建本地软件仓库">
+                <i class="fa fa-chevron-left"></i> 创建本地软件仓库
               </a>
             
           </div>
@@ -573,10 +587,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/letsencrypt-manual/" rel="prev" title="使用 Certbot 工具申请 Let's Encrypt 证书">
-                使用 Certbot 工具申请 Let's Encrypt 证书 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -829,7 +839,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitLab-安装"><span class="nav-number">1.</span> <span class="nav-text">GitLab 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitLab-迁移"><span class="nav-number">2.</span> <span class="nav-text">GitLab 迁移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitLab-升级"><span class="nav-number">3.</span> <span class="nav-text">GitLab 升级</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#扩容软-RAID1"><span class="nav-number">1.</span> <span class="nav-text">扩容软 RAID1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘分区扩容"><span class="nav-number">1.1.</span> <span class="nav-text">磁盘分区扩容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统扩容"><span class="nav-number">1.2.</span> <span class="nav-text">文件系统扩容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恢复-MySQL-服务"><span class="nav-number">1.3.</span> <span class="nav-text">恢复 MySQL 服务</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1004,9 +1014,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://iamtim.wang/gitlab-install-migration-upgrade/';
-        this.page.identifier = 'gitlab-install-migration-upgrade/';
-        this.page.title = 'GitLab 安装、迁移和升级';
+        this.page.url = 'https://iamtim.wang/mdadm-expansion-raid1/';
+        this.page.identifier = 'mdadm-expansion-raid1/';
+        this.page.title = '扩容软 RAID1';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
