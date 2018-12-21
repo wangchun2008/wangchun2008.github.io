@@ -108,23 +108,27 @@
 
 
 
-  <meta name="description" content="人丑就得多读书">
-<meta property="og:type" content="website">
-<meta property="og:title" content="懒癌晚期的中年大叔">
-<meta property="og:url" content="https://iamtim.wang/categories/revision-control/index.html">
+  <meta name="description" content="生产环境 GitLab 发送邮件失败，检查发现是阿里云邮箱强制使用加密端口导致，修改相应配置后问题解决。  GitLab 版本：9.5.10">
+<meta name="keywords" content="gitlab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gitlab 发送邮件配置">
+<meta property="og:url" content="https://iamtim.wang/gitlab-config-mail/index.html">
 <meta property="og:site_name" content="懒癌晚期的中年大叔">
-<meta property="og:description" content="人丑就得多读书">
+<meta property="og:description" content="生产环境 GitLab 发送邮件失败，检查发现是阿里云邮箱强制使用加密端口导致，修改相应配置后问题解决。  GitLab 版本：9.5.10">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/gitlab-config-mail.png">
+<meta property="og:updated_time" content="2018-12-21T02:47:26.446Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒癌晚期的中年大叔">
-<meta name="twitter:description" content="人丑就得多读书">
+<meta name="twitter:title" content="Gitlab 发送邮件配置">
+<meta name="twitter:description" content="生产环境 GitLab 发送邮件失败，检查发现是阿里云邮箱强制使用加密端口导致，修改相应配置后问题解决。  GitLab 版本：9.5.10">
+<meta name="twitter:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/gitlab-config-mail.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://iamtim.wang/categories/revision-control/"/>
+  <link rel="canonical" href="https://iamtim.wang/gitlab-config-mail/"/>
 
 
 
@@ -134,7 +138,7 @@
   };
 </script>
 
-  <title>分类: revision control | 懒癌晚期的中年大叔</title>
+  <title>Gitlab 发送邮件配置 | 懒癌晚期的中年大叔</title>
   
 
 
@@ -181,7 +185,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,7 +238,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
   </li>
@@ -322,144 +326,273 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>revision control<small>分类</small>
-        </h2>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iamtim.wang/gitlab-config-mail/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tim Wang">
+      <meta itemprop="description" content="人丑就得多读书">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="懒癌晚期的中年大叔">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/gitlab-config-mail/" itemprop="url">
-              
-                <span itemprop="name">Gitlab 发送邮件配置</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Gitlab 发送邮件配置
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-12-21T00:00:01+08:00"
-              content="2018-12-21" >
-          12-21
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-21 00:00:01 / 修改时间：10:47:26" itemprop="dateCreated datePublished" datetime="2018-12-21T00:00:01+08:00">2018-12-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/revision-control/" itemprop="url" rel="index"><span itemprop="name">revision control</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/revision-control/gitlab/" itemprop="url" rel="index"><span itemprop="name">gitlab</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/gitlab-config-mail/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="gitlab-config-mail/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/gitlab-upgrade-test/" itemprop="url">
-              
-                <span itemprop="name">GitLab 版本升级测试</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-17T00:00:02+08:00"
-              content="2017-03-17" >
-          03-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/gitlab-install-migration-upgrade/" itemprop="url">
-              
-                <span itemprop="name">GitLab 安装、迁移和升级</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-15T00:00:01+08:00"
-              content="2017-03-15" >
-          03-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p><img src="https://iamtimwang.oss-cn-beijing.aliyuncs.com/gitlab-config-mail.png" alt="Gitlab 发送邮件配置"></p>
+<p>生产环境 GitLab 发送邮件失败，检查发现是阿里云邮箱强制使用加密端口导致，修改相应配置后问题解决。</p>
+<blockquote>
+<p>GitLab 版本：9.5.10</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Gitlab-发送邮件配置"><a href="#Gitlab-发送邮件配置" class="headerlink" title="Gitlab 发送邮件配置"></a>Gitlab 发送邮件配置</h1><p>修改配置文件 <code>/etc/gitlab/gitlab.rb</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原配置：</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_enable'</span>] = <span class="literal">true</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_address'</span>] = <span class="string">"smtp.test.cn"</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_user_name'</span>] = <span class="string">"gitlab@test.cn"</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_password'</span>] = <span class="string">"XXXXXXXXXXXXX"</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_domain'</span>] = <span class="string">"test.cn"</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_authentication'</span>] = <span class="string">"login"</span></span><br><span class="line">gitlab_rails[<span class="string">'gitlab_email_from'</span>] = <span class="string">"gitlab@test.cn"</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_enable_starttls_auto'</span>] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改端口：</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_port'</span>] = 465</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加如下配置：</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_tls'</span>] = <span class="literal">true</span></span><br><span class="line">gitlab_rails[<span class="string">'smtp_openssl_verify_mode'</span>] = <span class="string">"none"</span></span><br></pre></td></tr></table></figure>
+<p>重新配置 gitlab：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+<p>验证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gitlab-rails console</span><br><span class="line">Notify.test_email(<span class="string">'imtimwang@google.com'</span>, <span class="string">'Message Subject'</span>, <span class="string">'Message Body'</span>).deliver_now</span><br></pre></td></tr></table></figure>
+<p>邮件发送成功，问题解决。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gitlab/" rel="tag"># gitlab</a>
+          
+        </div>
+      
+
+      
+      
+      
+       
+     <div>    
+      
+      <ul class="post-copyright">
+         <li class="post-copyright-link">
+          <strong>本文作者：</strong>
+          <a href="/" title="欢迎访问 Tim Wang 的个人博客">Tim Wang</a>
+        </li>
+
+        <li class="post-copyright-link">
+          <strong>本文标题：</strong>
+          <a href="https://iamtim.wang/gitlab-config-mail/" title="Gitlab 发送邮件配置">Gitlab 发送邮件配置</a>
+        </li>
+
+        <li class="post-copyright-link">
+          <strong>本文链接：</strong>
+          <a href="https://iamtim.wang/gitlab-config-mail/" title="Gitlab 发送邮件配置">https://iamtim.wang/gitlab-config-mail/</a>
+        </li>
+
+        <li class="post-copyright-date">
+            <strong>发布时间：</strong>2018年12月21日 - 00时12分
+        </li>  
+
+        <li class="post-copyright-license">
+          <strong>版权声明： </strong>
+          本文由 Tim Wang 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank">保留署名-非商业性使用-禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
+        </li>
+      </ul>
+    
+  </div> 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/mdadm-expansion-raid1/" rel="next" title="扩容软 RAID1">
+                <i class="fa fa-chevron-left"></i> 扩容软 RAID1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -480,8 +613,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -656,6 +798,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gitlab-发送邮件配置"><span class="nav-number">1.</span> <span class="nav-text">Gitlab 发送邮件配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -803,6 +961,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
 
   
 
@@ -817,6 +979,23 @@
     <script id="dsq-count-scr" src="https://iamtimwang.disqus.com/count.js" async></script>
   
 
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://iamtim.wang/gitlab-config-mail/';
+        this.page.identifier = 'gitlab-config-mail/';
+        this.page.title = 'Gitlab 发送邮件配置';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://iamtimwang.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
   
 
 
