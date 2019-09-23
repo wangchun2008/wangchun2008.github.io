@@ -329,6 +329,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[zabbix 3.0.7 安装]]></title>
+    <url>%2Fzabbix-install%2F</url>
+    <content type="text"><![CDATA[在测试环境安装配置 zabbix，用来进行学习。 zabbix 需要运行在 LAMP 上，具体配置要求可以查看 zabbix 3.0 documentation CentOS 版本：6.7 x86_64 MySQL 版本为：5.7.12 PHP 版本为：5.5.38 Apache 版本为：2.2.15 安装 MySQL 5.7使用二进制安装包，安装步骤请参考：二进制安装 MySQL 5.7.18 安装 PHP 5.5安装 YUM 源 1rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm 安装 PHP 1yum install httpd php55w php55w-mysql php55w-gd php55w-imap php55w-ldap php55w-odbc php55w-pear php55w-xml php55w-xmlrpc php55w-mcrypt php55w-mbstring php55w-devel php55w-pecl-memcached php55w-common php55w-pdo php55w-cli php55w-pecl-memcache php55w-bcmath php55w-fpm 修改 /etc/php.ini 文件 1mysqli.default_socket = /mysql/data/mysql.sock 安装 zabbix 3.0.7更新 curl 1234567cd /etc/yum.repos.drename .repo .bak *.repowget http://mirrors.163.com/.help/CentOS6-Base-163.reposed -i 's@^exclude@#exclude@' /etc/yum.confyum clean allyum makecacheyum install curl libcurl libcurl-devel 安装 zabbix 源 12rpm -ivh http://repo.zabbix.com/zabbix/3.0/rhel/6/x86_64/zabbix-release-3.0-1.el6.noarch.rpmyum install zabbix-server-mysql zabbix-web-mysql 创建 zabbix 数据库 123create database zabbix character set utf8 collate utf8_bin;grant all privileges on zabbix.* to zabbix@localhost identified by 'xxxx';zcat /usr/share/doc/zabbix-server-mysql-3.0.7/create.sql.gz | mysql -uzabbix -p 配置 zabbix 数据库连接 12345cat /etc/zabbix/zabbix_server.confDBHost=localhostDBName=zabbixDBUser=zabbixDBPassword=xxxx 添加 zabbix 的 apache 配置 123cp /usr/share/doc/zabbix-web-3.0.7/httpd22-example.conf /etc/httpd/conf.d/zabbix.confsed -i "s@# php_value date.timezone Europe/Riga@php_value date.timezone Asia/Shanghai@" /etc/httpd/conf.d/zabbix.confservice httpd restart 访问 http://ip/zabbix 进行初始化配置。]]></content>
+      <categories>
+        <category>monitor</category>
+      </categories>
+      <tags>
+        <tag>zabbix</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[GitLab 安装、迁移和升级]]></title>
     <url>%2Fgitlab-install-migration-upgrade%2F</url>
     <content type="text"><![CDATA[记录GitLab 安装、迁移和升级命令。 安装介质可以从 gitlab 官网 选择对应的操作系统版本进行下载 操作系统版本：CentOS 6.5_64 GitLab 版本：7.14.1 GitLab 安装123456yum install curl openssh-server postfix cronieservice postfix startchkconfig postfix onchkconfig iptables offservice iptables stoprpm -ivh gitlab-ce-7.14.1-ce.0.el6.x86_64.rpm GitLab 迁移 注意：gitlab 版本要保持一致 12345cp 1454176910_gitlab_backup.tar /var/opt/gitlab/backupsgitlab-ctl stop unicorngitlab-ctl stop sidekiqgitlab-rake gitlab:backup:restore BACKUP=1454176910gitlab-ctl start GitLab 升级 注意：gitlab 服务器升级版本会自动备份 1rpm -Uvh gitlab-ce-8.3.1-ce.1.el6.x86_64.rpm]]></content>
@@ -339,17 +350,6 @@
       <tags>
         <tag>gitlab</tag>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[zabbix 3.0.7 安装]]></title>
-    <url>%2Fzabbix-install%2F</url>
-    <content type="text"><![CDATA[在测试环境安装配置 zabbix，用来进行学习。 zabbix 需要运行在 LAMP 上，具体配置要求可以查看 zabbix 3.0 documentation CentOS 版本：6.7 x86_64 MySQL 版本为：5.7.12 PHP 版本为：5.5.38 Apache 版本为：2.2.15 安装 MySQL 5.7使用二进制安装包，安装步骤请参考：二进制安装 MySQL 5.7.18 安装 PHP 5.5安装 YUM 源 1rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm 安装 PHP 1yum install httpd php55w php55w-mysql php55w-gd php55w-imap php55w-ldap php55w-odbc php55w-pear php55w-xml php55w-xmlrpc php55w-mcrypt php55w-mbstring php55w-devel php55w-pecl-memcached php55w-common php55w-pdo php55w-cli php55w-pecl-memcache php55w-bcmath php55w-fpm 修改 /etc/php.ini 文件 1mysqli.default_socket = /mysql/data/mysql.sock 安装 zabbix 3.0.7更新 curl 1234567cd /etc/yum.repos.drename .repo .bak *.repowget http://mirrors.163.com/.help/CentOS6-Base-163.reposed -i 's@^exclude@#exclude@' /etc/yum.confyum clean allyum makecacheyum install curl libcurl libcurl-devel 安装 zabbix 源 12rpm -ivh http://repo.zabbix.com/zabbix/3.0/rhel/6/x86_64/zabbix-release-3.0-1.el6.noarch.rpmyum install zabbix-server-mysql zabbix-web-mysql 创建 zabbix 数据库 123create database zabbix character set utf8 collate utf8_bin;grant all privileges on zabbix.* to zabbix@localhost identified by 'xxxx';zcat /usr/share/doc/zabbix-server-mysql-3.0.7/create.sql.gz | mysql -uzabbix -p 配置 zabbix 数据库连接 12345cat /etc/zabbix/zabbix_server.confDBHost=localhostDBName=zabbixDBUser=zabbixDBPassword=xxxx 添加 zabbix 的 apache 配置 123cp /usr/share/doc/zabbix-web-3.0.7/httpd22-example.conf /etc/httpd/conf.d/zabbix.confsed -i "s@# php_value date.timezone Europe/Riga@php_value date.timezone Asia/Shanghai@" /etc/httpd/conf.d/zabbix.confservice httpd restart 访问 http://ip/zabbix 进行初始化配置。]]></content>
-      <categories>
-        <category>monitor</category>
-      </categories>
-      <tags>
-        <tag>zabbix</tag>
       </tags>
   </entry>
   <entry>
