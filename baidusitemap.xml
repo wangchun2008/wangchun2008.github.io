@@ -4,6 +4,77 @@
 
     
   <url>
+    <loc>https://iamtim.wang/install-and-settings-for-tomcat/</loc>
+    <lastmod>2019-09-30T04:18:56.351Z</lastmod>
+    <data>
+        <display>
+        <title>安装配置 Tomcat 7</title>
+        <pubTime>2018-07-16T16:00:01.000Z</pubTime>
+        
+        <tag>tomcat</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="https://iamtim.wang/categories/linux/"/>
+          
+             
+              <breadCrumb title="tomcat" url="https://iamtim.wang/categories/linux/tomcat/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://iamtim.wang/mysql-data-recovery/</loc>
+    <lastmod>2019-09-30T03:23:37.186Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 数据恢复</title>
+        <pubTime>2017-05-26T16:00:02.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+        <tag>xtrabackup</tag>
+         
+         
+           
+             
+              <breadCrumb title="database" url="https://iamtim.wang/categories/database/"/>
+          
+             
+              <breadCrumb title="mysql" url="https://iamtim.wang/categories/database/mysql/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://iamtim.wang/mysql-oom/</loc>
+    <lastmod>2019-09-30T02:12:40.948Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL OOM 处理</title>
+        <pubTime>2018-09-21T16:00:02.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="database" url="https://iamtim.wang/categories/database/"/>
+          
+             
+              <breadCrumb title="mysql" url="https://iamtim.wang/categories/database/mysql/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://iamtim.wang/goproxy-install/</loc>
     <lastmod>2019-09-23T06:41:06.392Z</lastmod>
     <data>

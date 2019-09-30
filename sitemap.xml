@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iamtim.wang/install-and-settings-for-tomcat/</loc>
+    
+    <lastmod>2019-09-30T04:18:56.351Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtim.wang/mysql-data-recovery/</loc>
+    
+    <lastmod>2019-09-30T03:23:37.186Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iamtim.wang/mysql-oom/</loc>
+    
+    <lastmod>2019-09-30T02:12:40.948Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iamtim.wang/goproxy-install/</loc>
     
     <lastmod>2019-09-23T06:41:06.392Z</lastmod>
