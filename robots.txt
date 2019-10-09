@@ -13,4 +13,4 @@ Disallow: /fancybox/
 
 Sitemap: http://iamtim.wang/sitemap.xml
 Sitemap: http://iamtim.wang/baidusitemap.xml
-
+Sitemap: http://iamtim.wang/BingSiteAuth.xml

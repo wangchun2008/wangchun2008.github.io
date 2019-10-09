@@ -4,6 +4,24 @@
 
     
   <url>
+    <loc>https://iamtim.wang/resource-summary/</loc>
+    <lastmod>2019-10-09T01:52:37.711Z</lastmod>
+    <data>
+        <display>
+        <title>资源汇总</title>
+        <pubTime>2017-04-10T16:00:01.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="other" url="https://iamtim.wang/categories/other/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://iamtim.wang/install-and-settings-for-tomcat/</loc>
     <lastmod>2019-09-30T04:18:56.351Z</lastmod>
     <data>
@@ -435,24 +453,6 @@
           
              
               <breadCrumb title="mysql" url="https://iamtim.wang/categories/database/mysql/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://iamtim.wang/resource-summary/</loc>
-    <lastmod>2018-06-11T06:17:26.798Z</lastmod>
-    <data>
-        <display>
-        <title>资源汇总</title>
-        <pubTime>2017-04-10T16:00:01.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="other" url="https://iamtim.wang/categories/other/"/>
           
         </display>
     </data>
