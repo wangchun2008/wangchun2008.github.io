@@ -4,6 +4,29 @@
 
     
   <url>
+    <loc>https://iamtim.wang/glusterfs-install-and-settings-for-test-environment/</loc>
+    <lastmod>2019-10-24T06:08:11.075Z</lastmod>
+    <data>
+        <display>
+        <title>安装配置 GlusterFS 文件系统</title>
+        <pubTime>2017-03-14T16:00:01.000Z</pubTime>
+        
+        <tag>glusterfs</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="https://iamtim.wang/categories/linux/"/>
+          
+             
+              <breadCrumb title="file system" url="https://iamtim.wang/categories/linux/file-system/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://iamtim.wang/resource-summary/</loc>
     <lastmod>2019-10-09T01:52:37.711Z</lastmod>
     <data>
@@ -319,29 +342,6 @@
            
              
               <breadCrumb title="monitor" url="https://iamtim.wang/categories/monitor/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://iamtim.wang/glusterfs-install-and-settings-for-test-environment/</loc>
-    <lastmod>2018-06-11T06:18:32.202Z</lastmod>
-    <data>
-        <display>
-        <title>安装配置 GlusterFS 文件系统</title>
-        <pubTime>2017-03-14T16:00:01.000Z</pubTime>
-        
-        <tag>glusterfs</tag>
-         
-         
-           
-             
-              <breadCrumb title="linux" url="https://iamtim.wang/categories/linux/"/>
-          
-             
-              <breadCrumb title="file system" url="https://iamtim.wang/categories/linux/file-system/"/>
           
         </display>
     </data>

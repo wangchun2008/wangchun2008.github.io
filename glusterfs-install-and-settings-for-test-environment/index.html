@@ -117,7 +117,7 @@
 <meta property="og:description" content="在两台虚拟机上安装配置 GlusterFS 文件系统，用于学习与测试。  服务器信息：test01(192.168.115.131)、test02(192.168.155.132) OS版本：CentOS release 6.7 (Final) GlusterFS 版本：3.8.4">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://iamtimwang.oss-cn-beijing.aliyuncs.com/glusterfs-install-and-settings-for-test-environment.png">
-<meta property="og:updated_time" content="2018-06-11T06:18:32.202Z">
+<meta property="og:updated_time" content="2019-10-24T06:08:11.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装配置 GlusterFS 文件系统">
 <meta name="twitter:description" content="在两台虚拟机上安装配置 GlusterFS 文件系统，用于学习与测试。  服务器信息：test01(192.168.115.131)、test02(192.168.155.132) OS版本：CentOS release 6.7 (Final) GlusterFS 版本：3.8.4">
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-06-11 14:18:32" itemprop="dateModified" datetime="2018-06-11T14:18:32+08:00">2018-06-11</time>
+                <time title="修改时间：2019-10-24 14:08:11" itemprop="dateModified" datetime="2019-10-24T14:08:11+08:00">2019-10-24</time>
               
             
           </span>
@@ -502,7 +502,7 @@
 <p>查看版本信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gluster --version</span><br><span class="line">glusterfs 3.8.4 built on Sep  9 2016 17:31:23</span><br><span class="line">Repository revision: git://git.gluster.com/glusterfs.git</span><br><span class="line">Copyright (c) 2006-2011 Gluster Inc. &lt;http://www.gluster.com&gt;</span><br><span class="line">GlusterFS comes with ABSOLUTELY NO WARRANTY.</span><br><span class="line">You may redistribute copies of GlusterFS under the terms of the GNU     General Public License.</span><br><span class="line">You have new mail <span class="keyword">in</span> /var/spool/mail/root</span><br></pre></td></tr></table></figure>
 <h1 id="配置-Replicated-Glusterfs-Volume"><a href="#配置-Replicated-Glusterfs-Volume" class="headerlink" title="配置 Replicated Glusterfs Volume"></a>配置 Replicated Glusterfs Volume</h1><p>配置可信任的池</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gluster peer probe test02  ----test01执行</span><br><span class="line">gluster peer probe test01  ----test02执行</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gluster peer probe test02  ----test01执行</span><br><span class="line">gluster peer probe test01  ----test02执行</span><br></pre></td></tr></table></figure>
 <p>创建 GlusterFS volume</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /data/brick1/gv0</span><br><span class="line">gluster volume create gv0 replica 2 test01:/data/brick1/gv0 test02:/data/brick1/gv0</span><br><span class="line">gluster volume start gv0</span><br></pre></td></tr></table></figure>
 <p>查看信息</p>

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iamtim.wang/glusterfs-install-and-settings-for-test-environment/</loc>
+    
+    <lastmod>2019-10-24T06:08:11.075Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iamtim.wang/resource-summary/</loc>
     
     <lastmod>2019-10-09T01:52:37.711Z</lastmod>
@@ -110,13 +117,6 @@
     <loc>https://iamtim.wang/pmm-install/</loc>
     
     <lastmod>2018-09-12T04:44:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iamtim.wang/glusterfs-install-and-settings-for-test-environment/</loc>
-    
-    <lastmod>2018-06-11T06:18:32.202Z</lastmod>
     
   </url>
   
